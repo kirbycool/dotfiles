@@ -40,7 +40,7 @@ Plugin 'pangloss/vim-javascript'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-filetype plugin on    " required
+filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
@@ -55,6 +55,9 @@ filetype plugin on    " required
 
 syntax enable
 set number
+
+set ignorecase
+set smartcase
 
 if has('gui_running')
 	set guifont=Source\ Code\ Pro:h14
