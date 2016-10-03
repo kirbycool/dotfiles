@@ -15,6 +15,7 @@ Plug 'zchee/deoplete-jedi'
 Plug 'benekastah/neomake'
 Plug 'tpope/vim-fugitive'
 Plug 'ternjs/tern_for_vim'
+Plug 'hynek/vim-python-pep8-indent'
 function! DoRemote(arg)
     UpdateRemotePlugins
 endfunction
@@ -50,15 +51,27 @@ let mapleader = ","
 
 let g:netrw_liststyle=3
 
+" Close omni completion help window on completion done
+autocmd CompleteDone * pclose
+
 """""
 " Keybinds
 """""
+" Move screen lines instead of buffer lines
+nnoremap j gj
+nnoremap k gk
+
+inoremap <PageUp> <ESC>
+nnoremap <PageUp> <ESC>
+vnoremap <PageUp> <ESC>
+onoremap <PageUp> <ESC>
+cnoremap <PageUp> <C-c>
 
 nnoremap <leader>e :Texplore<CR>
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+nnoremap <leader><S-J> <C-W><C-J>
+nnoremap <leader><S-K> <C-W><C-K>
+nnoremap <leader><S-L> <C-W><C-L>
+nnoremap <leader><S-H> <C-W><C-H>
 map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR> " Toggle background
 
 " Go to tab by number
@@ -75,8 +88,10 @@ noremap <leader>0 :tablast<cr>
 noremap <leader>h gT
 noremap <leader>l gt
 
-" open tag in new tab
-noremap <leader><c-]> <c-w><c-]><c-w>T
+" tag
+nnoremap <leader>] <c-]>
+nnoremap <leader>t <c-t>
+nnoremap <leader><s-]> <c-w><c-]><c-w>T
 
 " generate ctags
 noremap <leader>gt !ctags -R --exclude=@.ctagsignore --languages=python ./
@@ -104,6 +119,10 @@ inoremap <silent><expr><s-tab> pumvisible() ? "\<C-p>" : "\<s-tab>"
 
 " Neomake
 let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_python_enabled_makers = ['flake8']
+let g:neomake_python_flake8_maker = {
+    \   'args': ['--filename=*'],
+    \ }
 autocmd! BufWritePost * Neomake
 
 set clipboard+=unnamedplus
