@@ -1,26 +1,27 @@
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'altercation/vim-colors-solarized'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'mustache/vim-mustache-handlebars'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'pangloss/vim-javascript'
-Plug 'Yggdroot/indentLine'
-Plug 'ternjs/tern_for_vim'
-Plug 'zchee/deoplete-jedi'
-Plug 'benekastah/neomake'
-Plug 'tpope/vim-fugitive'
-Plug 'ternjs/tern_for_vim'
-Plug 'hynek/vim-python-pep8-indent'
 function! DoRemote(arg)
     UpdateRemotePlugins
 endfunction
+
+Plug 'altercation/vim-colors-solarized'
+Plug 'benekastah/neomake'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'hynek/vim-python-pep8-indent'
+Plug 'jelera/vim-javascript-syntax'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'pangloss/vim-javascript'
 Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+Plug 'ternjs/tern_for_vim'
 Plug 'tmhedberg/SimpylFold'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'Yggdroot/indentLine'
+Plug 'zchee/deoplete-jedi'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -37,9 +38,8 @@ set smartcase
 set nohlsearch
 set noincsearch
 
-
 if has('gui_running')
-	set guifont=Source\ Code\ Pro\ for\ Powerline:h14
+   set guifont=Source\ Code\ Pro\ for\ Powerline:h14
 endif
 
 set laststatus=2
@@ -74,6 +74,11 @@ nnoremap <leader><S-L> <C-W><C-L>
 nnoremap <leader><S-H> <C-W><C-H>
 map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR> " Toggle background
 
+" Buffer nav
+map <Leader>a :bprev<Return>
+map <Leader>s :bnext<Return>
+map <Leader>d :bd<Return>
+
 " Go to tab by number
 noremap <leader>1 1gt
 noremap <leader>2 2gt
@@ -99,6 +104,11 @@ noremap <leader>gt !ctags -R --exclude=@.ctagsignore --languages=python ./
 " Airline
 let g:airline_theme = 'solarized'
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#virtualenv#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_splits = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " CtrlP bindings
 let g:ctrlp_map = '<c-p>'
@@ -126,3 +136,6 @@ let g:neomake_python_flake8_maker = {
 autocmd! BufWritePost * Neomake
 
 set clipboard+=unnamedplus
+
+" javascript
+let g:vim_json_syntax_conceal = 0
