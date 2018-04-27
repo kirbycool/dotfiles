@@ -6,18 +6,18 @@
 let g:airline_theme = 'solarized'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#virtualenv#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_splits = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#show_splits = 1
+"let g:airline#extensions#tabline#left_sep = ' '
+"let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " fzf
 nnoremap <silent> <leader>f :Files<CR>
 nnoremap <silent> <leader>t :Tags<CR>
 
 " Ack
-if executable('ag')
-  let g:ackprg = 'ag --vimgrep'
+if executable('rg')
+  let g:ackprg = 'rg --vimgrep'
 endif
 cnoreabbrev Ack Ack!
 nnoremap <leader>/ :Ack!<Space>
@@ -29,6 +29,9 @@ let g:deoplete#enable_refresh_always = 0
 inoremap <silent><expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
 inoremap <silent><expr><s-tab> pumvisible() ? "\<C-p>" : "\<s-tab>"
 
+" Deoplete Jedi
+" let g:deoplete#sources#jedi#python_path = '/Users/kcool/.pyenv/versions/neovim3/bin/python'
+
 " Neomake
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_python_enabled_makers = ['flake8']
@@ -39,3 +42,7 @@ autocmd! BufWritePost * Neomake
 
 " indentLine
 let g:indentLine_setConceal = 0
+
+" pydocstring
+let g:pydocstring_templates_dir = '~/.config/nvim/pydocstring_template'
+nmap <silent> <leader><S-D> <Plug>(pydocstring)

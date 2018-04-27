@@ -40,7 +40,7 @@ noremap <leader>l gt
 
 " tag
 nnoremap <leader>] <c-]>
-nnoremap <leader>t <c-t>
+nnoremap <leader>[ <c-t>
 nnoremap <leader><s-]> <c-w><c-]><c-w>T
 
 " generate ctags
