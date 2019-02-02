@@ -2,18 +2,12 @@
 " This is plugin settings. Plugin list is in init.vimrc
 """
 
-" Airline
-let g:airline_theme = 'solarized'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#virtualenv#enabled = 1
-"let g:airline#extensions#tabline#enabled = 1
-"let g:airline#extensions#tabline#show_splits = 1
-"let g:airline#extensions#tabline#left_sep = ' '
-"let g:airline#extensions#tabline#left_alt_sep = '|'
-
 " fzf
 nnoremap <silent> <leader>f :Files<CR>
 nnoremap <silent> <leader>t :Tags<CR>
+
+" vim-json
+let g:vim_json_syntax_conceal = 0
 
 " Ack
 if executable('rg')
@@ -22,27 +16,54 @@ endif
 cnoreabbrev Ack Ack!
 nnoremap <leader>/ :Ack!<Space>
 
-" Deoplete
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#enable_ignore_case = 0
-let g:deoplete#enable_refresh_always = 0
+" ncm2
+set shortmess+=c
+set completeopt=noinsert,menuone,noselect
+autocmd BufEnter * call ncm2#enable_for_buffer()
 inoremap <silent><expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
 inoremap <silent><expr><s-tab> pumvisible() ? "\<C-p>" : "\<s-tab>"
-
-" Deoplete Jedi
-" let g:deoplete#sources#jedi#python_path = '/Users/kcool/.pyenv/versions/neovim3/bin/python'
-
-" Neomake
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_python_enabled_makers = ['flake8']
-let g:neomake_python_flake8_maker = {
-    \   'args': ['--filename=*'],
-    \ }
-autocmd! BufWritePost * Neomake
 
 " indentLine
 let g:indentLine_setConceal = 0
 
-" pydocstring
-let g:pydocstring_templates_dir = '~/.config/nvim/pydocstring_template'
-nmap <silent> <leader><S-D> <Plug>(pydocstring)
+" fugitive
+nnoremap <leader>b :Gblame<CR>
+
+" Easy Align
+xnoremap ga <Plug>(EasyAlign)
+nnoremap ga <Plug>(EasyAlign)
+
+" ALE
+hi ALESignColumnWithoutErrors ctermbg=black
+hi ALESignColumnWithErrors ctermbg=darkgrey
+let g:ale_sign_column_always = 1
+let g:ale_change_sign_column_color = 1
+let g:ale_fix_on_save = 1
+nnoremap <Leader>F :ALEFix<CR>
+
+" vim-javascript
+let g:javascript_plugin_flow = 1
+
+" LanguageClient
+let g:LanguageClient_serverCommands = {
+    \ 'ruby': ['solargraph', 'stdio'],
+    \ 'javascript': ['flow-language-server', '--stdio'],
+    \ 'javascript.jsx': ['flow-language-server', '--try-flow-bin', '--stdio'],
+\ }
+
+" lightline
+let g:lightline = {
+      \ 'colorscheme': 'solarized',
+      \ 'active': {
+      \     'left': [['mode', 'paste'], ['gitbranch', 'readonly', 'relative_path', 'modified']],
+      \     'right': [['lineinfo'], ['percent']]
+      \ },
+      \ 'component_function': {
+      \     'gitbranch': 'fugitive#head',
+      \     'relative_path': 'LightlineRelativePath'
+      \ }
+\ }
+
+function! LightlineRelativePath()
+  return expand('%')
+endfunction

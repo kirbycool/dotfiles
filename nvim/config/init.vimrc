@@ -5,29 +5,34 @@ function! DoRemote(arg)
     UpdateRemotePlugins
 endfunction
 
-Plug '/usr/local/opt/fzf'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+\ }
 Plug 'altercation/vim-colors-solarized'
-Plug 'benekastah/neomake'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'elzr/vim-json'
-Plug 'heavenshell/vim-pydocstring'
-Plug 'hynek/vim-python-pep8-indent'
-Plug 'jelera/vim-javascript-syntax'
-Plug 'jparise/vim-graphql'
+Plug 'fgrsnau/ncm2-otherbuf', { 'branch': 'ncm2' }
+Plug 'itchyny/lightline.vim'
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'leafgarland/typescript-vim'
-Plug 'mhartington/nvim-typescript'
+Plug 'junegunn/vim-easy-align'
+Plug 'Konfekt/FastFold'
 Plug 'mileszs/ack.vim'
-Plug 'mustache/vim-mustache-handlebars'
+Plug 'mxw/vim-jsx'
+Plug 'ncm2/ncm2'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
+Plug 'noprompt/vim-yardoc'
 Plug 'pangloss/vim-javascript'
-Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
-Plug 'ternjs/tern_for_vim'
+Plug 'roxma/nvim-yarp'
+Plug 'thoughtbot/vim-rspec'
+Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'Yggdroot/indentLine'
-Plug 'zchee/deoplete-jedi'
+Plug 'vim-ruby/vim-ruby'
+Plug 'w0rp/ale', { 'tag': 'v2.*' }
+
 
 " Add plugins to &runtimepath
 call plug#end()
