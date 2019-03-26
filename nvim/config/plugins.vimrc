@@ -16,16 +16,6 @@ endif
 cnoreabbrev Ack Ack!
 nnoremap <leader>/ :Ack!<Space>
 
-" ncm2
-set shortmess+=c
-set completeopt=noinsert,menuone,noselect
-autocmd BufEnter * call ncm2#enable_for_buffer()
-inoremap <silent><expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
-inoremap <silent><expr><s-tab> pumvisible() ? "\<C-p>" : "\<s-tab>"
-
-" indentLine
-let g:indentLine_setConceal = 0
-
 " fugitive
 nnoremap <leader>b :Gblame<CR>
 
@@ -44,13 +34,6 @@ nnoremap <Leader>F :ALEFix<CR>
 " vim-javascript
 let g:javascript_plugin_flow = 1
 
-" LanguageClient
-let g:LanguageClient_serverCommands = {
-    \ 'ruby': ['solargraph', 'stdio'],
-    \ 'javascript': ['flow-language-server', '--stdio'],
-    \ 'javascript.jsx': ['flow-language-server', '--try-flow-bin', '--stdio'],
-\ }
-
 " lightline
 let g:lightline = {
       \ 'colorscheme': 'solarized',
@@ -60,7 +43,7 @@ let g:lightline = {
       \ },
       \ 'component_function': {
       \     'gitbranch': 'fugitive#head',
-      \     'relative_path': 'LightlineRelativePath'
+      \     'relative_path': 'LightlineRelativePath',
       \ }
 \ }
 

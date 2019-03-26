@@ -1,2 +1,2 @@
 " Fix files with prettier
-let b:ale_fixers = ['rubocop']
+let b:ale_fixers = ['prettier', 'rubocop']
