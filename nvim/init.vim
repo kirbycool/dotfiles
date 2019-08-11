@@ -15,7 +15,6 @@ Plug 'mxw/vim-jsx'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'noprompt/vim-yardoc'
 Plug 'pangloss/vim-javascript'
-Plug 'peitalin/vim-jsx-typescript'
 Plug 'roxma/nvim-yarp'
 Plug 'Shougo/echodoc.vim'
 Plug 'thoughtbot/vim-rspec'
