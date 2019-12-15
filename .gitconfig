@@ -10,3 +10,6 @@ email = "kirbydcool@gmail.com"
 	st = status
 	rs = reset
 	rb = rebase
+  cp = cherry-pick
+[core]
+	pager = diff-so-fancy | less --tabs=4 -RFX

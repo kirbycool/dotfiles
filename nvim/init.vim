@@ -1,10 +1,11 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'altercation/vim-colors-solarized'
+Plug 'AndrewRadev/splitjoin.vim'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'elzr/vim-json'
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'jparise/vim-graphql'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
@@ -12,19 +13,26 @@ Plug 'Konfekt/FastFold'
 Plug 'leafgarland/typescript-vim'
 Plug 'mileszs/ack.vim'
 Plug 'mxw/vim-jsx'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'noprompt/vim-yardoc'
-Plug 'pangloss/vim-javascript'
-Plug 'roxma/nvim-yarp'
-Plug 'Shougo/echodoc.vim'
-Plug 'thoughtbot/vim-rspec'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-Plug 'vim-ruby/vim-ruby'
 Plug 'w0rp/ale'
 
-" Add plugins to &runtimepath
+" JS/TS
+Plug 'elzr/vim-json'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'jxnblk/vim-mdx-js'
+Plug 'mxw/vim-jsx'
+Plug 'othree/yajs.vim'
+
+" Rust
+Plug 'rust-lang/rust.vim'
+
+" Ruby
+Plug 'vim-ruby/vim-ruby'
+
 call plug#end()
 
 """
@@ -79,26 +87,17 @@ nnoremap <leader><S-J> <C-W><C-J>
 nnoremap <leader><S-K> <C-W><C-K>
 nnoremap <leader><S-L> <C-W><C-L>
 nnoremap <leader><S-H> <C-W><C-H>
-map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR> " Toggle background
+map <Leader>) :let &background = ( &background == "dark"? "light" : "dark" )<CR> " Toggle background
 
 set clipboard+=unnamedplus
+" Copy filename to clipboard
+nnoremap <leader>cf :let @* = expand('%')
 
 " Buffer nav
-map <Leader>a :bprev<Return>
-map <Leader>s :bnext<Return>
-map <Leader>d :bd<Return>
+map <Leader>j :b#<Return>
+map <Leader>q :bd<Return>
 
-" Go to tab by number
-noremap <leader>1 1gt
-noremap <leader>2 2gt
-noremap <leader>3 3gt
-noremap <leader>4 4gt
-noremap <leader>5 5gt
-noremap <leader>6 6gt
-noremap <leader>7 7gt
-noremap <leader>8 8gt
-noremap <leader>9 9gt
-noremap <leader>0 :tablast<cr>
+" Go to tab
 noremap <leader>h gT
 noremap <leader>l gt
 
@@ -120,7 +119,7 @@ inoremap <silent><expr><s-tab> pumvisible() ? "\<C-p>" : "\<s-tab>"
 
 " fzf
 nnoremap <silent> <leader>f :Files<CR>
-nnoremap <silent> <leader>t :Tags<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
 
 " vim-json
 let g:vim_json_syntax_conceal = 0
@@ -131,9 +130,6 @@ if executable('rg')
 endif
 cnoreabbrev Ack Ack!
 nnoremap <leader>/ :Ack!<Space>
-
-" fugitive
-nnoremap <leader>b :Gblame<CR>
 
 " Easy Align
 xnoremap ga <Plug>(EasyAlign)
@@ -146,9 +142,6 @@ let g:ale_sign_column_always = 1
 let g:ale_change_sign_column_color = 1
 let g:ale_fix_on_save = 1
 
-" vim-javascript
-let g:javascript_plugin_flow = 1
-
 " lightline
 let g:lightline = {
       \ 'colorscheme': 'solarized',
@@ -159,9 +152,14 @@ let g:lightline = {
       \ 'component_function': {
       \     'gitbranch': 'fugitive#head',
       \     'relative_path': 'LightlineRelativePath'
-      \ }
+      \ },
 \ }
 
 function! LightlineRelativePath()
   return expand('%')
 endfunction
+
+" coc
+imap <expr> <leader>l pumvisible() ? "\<C-y>" : "\<leader>l"
+let g:coc_snippet_next = "<TAB>"
+let g:coc_snippet_prev = "<S-TAB"
