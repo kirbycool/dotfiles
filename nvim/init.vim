@@ -1,6 +1,6 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'altercation/vim-colors-solarized'
+Plug 'joshdick/onedark.vim'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'itchyny/lightline.vim'
@@ -17,8 +17,11 @@ Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'noprompt/vim-yardoc'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
+Plug 'machakann/vim-sandwich'
 Plug 'w0rp/ale'
+
+" Coffeescript (da fuk cypress?)
+Plug 'kchmck/vim-coffee-script'
 
 " JS/TS
 Plug 'elzr/vim-json'
@@ -56,14 +59,18 @@ set noincsearch
 set noshowmode
 set completeopt-=preview
 
+
+"""
+" Colors
+"""
+" set background=dark
+set termguicolors
+colorscheme onedark
+highlight SignColumn ctermbg=black
+
 if has('gui_running')
    set guifont=Source\ Code\ Pro\ for\ Powerline:h14
 endif
-
-set background=dark
-colorscheme solarized
-
-highligh SignColumn ctermbg=black
 
 let g:netrw_liststyle=3
 
@@ -144,7 +151,7 @@ let g:ale_fix_on_save = 1
 
 " lightline
 let g:lightline = {
-      \ 'colorscheme': 'solarized',
+      \ 'colorscheme': 'onedark',
       \ 'active': {
       \     'left': [['mode', 'paste'], ['gitbranch', 'readonly', 'relative_path', 'modified']],
       \     'right': [['lineinfo'], ['percent']]
