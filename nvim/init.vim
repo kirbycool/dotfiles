@@ -98,7 +98,7 @@ map <Leader>) :let &background = ( &background == "dark"? "light" : "dark" )<CR>
 
 set clipboard+=unnamedplus
 " Copy filename to clipboard
-nnoremap <leader>cf :let @* = expand('%')
+nnoremap <leader>cf :let @* = expand('%')<CR>
 
 " Buffer nav
 map <Leader>j :b#<Return>
