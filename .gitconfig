@@ -1,15 +1,17 @@
 # This is Git's per-user configuration file.
 [user]
-name = "Kirby Cool"
-email = "kirbydcool@gmail.com"
+  name = "Kirby Cool"
+  email = "kirbydcool@gmail.com"
 
 [alias]
-	co = checkout
-	br = branch
-	ci = commit
-	st = status
-	rs = reset
-	rb = rebase
+  co = checkout
+  br = branch
+  ci = commit
+  st = status
+  rs = reset
+  rb = rebase
   cp = cherry-pick
+
 [core]
-	pager = diff-so-fancy | less --tabs=4 -RFX
+  commentchar = @
+  pager = diff-so-fancy | less --tabs=4 -RFX

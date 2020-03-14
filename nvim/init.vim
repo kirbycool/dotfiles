@@ -30,6 +30,9 @@ Plug 'jxnblk/vim-mdx-js'
 Plug 'mxw/vim-jsx'
 Plug 'othree/yajs.vim'
 
+" nginx
+Plug 'chr4/nginx.vim'
+
 " Rust
 Plug 'rust-lang/rust.vim'
 
@@ -43,7 +46,7 @@ call plug#end()
 """
 " Neovim stuff
 let g:python_host_prog = $ASDF_ROOT . '/installs/python/2.7.15/bin/python'
-let g:python3_host_prog = $ASDF_ROOT . '/installs/python/3.7.2/bin/python'
+let g:python3_host_prog = $ASDF_ROOT . '/installs/python/3.8.2/bin/python'
 
 filetype plugin on
 
