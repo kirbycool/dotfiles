@@ -8,7 +8,6 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'kirbycool/one-colors.vim'
 Plug 'mileszs/ack.vim'
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
@@ -16,13 +15,12 @@ Plug 'machakann/vim-sandwich'
 Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
 
-" graphql
-Plug 'jparise/vim-graphql'
+" Autocomplete/lsp stuffs
+Plug 'neovim/nvim-lsp'
+Plug 'nvim-lua/completion-nvim'
+" Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
-" nginx
-Plug 'chr4/nginx.vim'
-
-call plug#end()
+runtime completion.vim
 
 """
 " General Settings
@@ -98,6 +96,7 @@ inoremap <silent><expr><s-tab> pumvisible() ? "\<C-p>" : "\<s-tab>"
 " fzf
 nnoremap <silent> <leader>f :Files<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
+let g:fzf_preview_window = ''
 
 " vim-json
 let g:vim_json_syntax_conceal = 0
@@ -132,10 +131,6 @@ let g:lightline = {
 function! LightlineRelativePath()
   return expand('%')
 endfunction
-
-" coc
-nnoremap gd <Plug>(coc-definition)
-nnoremap gr <Plug>(coc-references)
 nnoremap K :call CocAction("doHover")<CR>
 
 " Treesitter
