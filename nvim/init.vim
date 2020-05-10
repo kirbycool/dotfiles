@@ -33,6 +33,9 @@ Plug 'othree/yajs.vim'
 " nginx
 Plug 'chr4/nginx.vim'
 
+" ReasonML
+Plug 'reasonml-editor/vim-reason-plus'
+
 " Rust
 Plug 'rust-lang/rust.vim'
 
@@ -170,6 +173,6 @@ function! LightlineRelativePath()
 endfunction
 
 " coc
-imap <expr> <leader>l pumvisible() ? "\<C-y>" : "\<leader>l"
-let g:coc_snippet_next = "<TAB>"
-let g:coc_snippet_prev = "<S-TAB"
+nnoremap gd <Plug>(coc-definition)
+nnoremap gr <Plug>(coc-references)
+nnoremap S-k :call CocAction("doHover")<CR>
