@@ -5,42 +5,21 @@ Plug 'AndrewRadev/splitjoin.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'jparise/vim-graphql'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
-Plug 'junegunn/vim-easy-align'
-Plug 'Konfekt/FastFold'
-Plug 'leafgarland/typescript-vim'
 Plug 'mileszs/ack.vim'
-Plug 'mxw/vim-jsx'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-Plug 'noprompt/vim-yardoc'
+Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'machakann/vim-sandwich'
 Plug 'w0rp/ale'
 
-" Coffeescript (da fuk cypress?)
-Plug 'kchmck/vim-coffee-script'
-
-" JS/TS
-Plug 'elzr/vim-json'
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'jxnblk/vim-mdx-js'
-Plug 'mxw/vim-jsx'
-Plug 'othree/yajs.vim'
+" graphql
+Plug 'jparise/vim-graphql'
 
 " nginx
 Plug 'chr4/nginx.vim'
-
-" ReasonML
-Plug 'reasonml-editor/vim-reason-plus'
-
-" Rust
-Plug 'rust-lang/rust.vim'
-
-" Ruby
-Plug 'vim-ruby/vim-ruby'
 
 call plug#end()
 
@@ -56,7 +35,9 @@ filetype plugin on
 syntax enable
 set number
 
-set foldmethod=syntax
+" Treesitter folding
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
 
 set ignorecase
 set smartcase
@@ -69,14 +50,9 @@ set completeopt-=preview
 """
 " Colors
 """
-" set background=dark
 set termguicolors
 colorscheme onedark
 highlight SignColumn ctermbg=black
-
-if has('gui_running')
-   set guifont=Source\ Code\ Pro\ for\ Powerline:h14
-endif
 
 let g:netrw_liststyle=3
 
@@ -114,14 +90,6 @@ map <Leader>q :bd<Return>
 noremap <leader>h gT
 noremap <leader>l gt
 
-" tag
-nnoremap <leader>] <c-]>
-nnoremap <leader>[ <c-t>
-nnoremap <leader><s-]> <c-w><c-]><c-w>T
-
-" generate ctags
-noremap <leader>gt !ctags -R --exclude=@.ctagsignore --languages=python ./
-
 " Autocomplete
 inoremap <silent><expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
 inoremap <silent><expr><s-tab> pumvisible() ? "\<C-p>" : "\<s-tab>"
@@ -143,10 +111,6 @@ if executable('rg')
 endif
 cnoreabbrev Ack Ack!
 nnoremap <leader>/ :Ack!<Space>
-
-" Easy Align
-xnoremap ga <Plug>(EasyAlign)
-nnoremap ga <Plug>(EasyAlign)
 
 " ALE
 hi ALESignColumnWithoutErrors ctermbg=black
@@ -176,3 +140,12 @@ endfunction
 nnoremap gd <Plug>(coc-definition)
 nnoremap gr <Plug>(coc-references)
 nnoremap S-k :call CocAction("doHover")<CR>
+
+" Treesitter
+lua <<EOF
+  require'nvim-treesitter.configs'.setup {
+    highlight = {
+        enable = true,
+    },
+  }
+EOF
