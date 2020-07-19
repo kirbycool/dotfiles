@@ -21,6 +21,8 @@ Plug 'jparise/vim-graphql'
 " nginx
 Plug 'chr4/nginx.vim'
 
+Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+
 call plug#end()
 
 """
@@ -34,6 +36,7 @@ filetype plugin on
 
 syntax enable
 set number
+set relativenumber
 
 " Treesitter folding
 set foldmethod=expr
