@@ -29,8 +29,8 @@ call plug#end()
 " General Settings
 """
 " Neovim stuff
-let g:python_host_prog = $ASDF_ROOT . '/installs/python/2.7.15/bin/python'
-let g:python3_host_prog = $ASDF_ROOT . '/installs/python/3.8.2/bin/python'
+let g:python_host_prog = trim(system('asdf which python2'))
+let g:python3_host_prog = trim(system('asdf which python3'))
 
 filetype plugin on
 
@@ -142,7 +142,7 @@ endfunction
 " coc
 nnoremap gd <Plug>(coc-definition)
 nnoremap gr <Plug>(coc-references)
-nnoremap S-k :call CocAction("doHover")<CR>
+nnoremap K :call CocAction("doHover")<CR>
 
 " Treesitter
 lua <<EOF
