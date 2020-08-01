@@ -1,12 +1,12 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'joshdick/onedark.vim'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
+Plug 'kirbycool/one-colors.vim'
 Plug 'mileszs/ack.vim'
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 Plug 'nvim-treesitter/nvim-treesitter'
@@ -36,7 +36,6 @@ filetype plugin on
 
 syntax enable
 set number
-set relativenumber
 
 " Treesitter folding
 set foldmethod=expr
@@ -124,7 +123,7 @@ let g:ale_fix_on_save = 1
 
 " lightline
 let g:lightline = {
-      \ 'colorscheme': 'onedark',
+      \ 'colorscheme': 'one',
       \ 'active': {
       \     'left': [['mode', 'paste'], ['gitbranch', 'readonly', 'relative_path', 'modified']],
       \     'right': [['lineinfo'], ['percent']]
