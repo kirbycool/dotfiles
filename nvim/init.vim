@@ -13,6 +13,7 @@ Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'machakann/vim-sandwich'
+Plug 'vimwiki/vimwiki'
 Plug 'w0rp/ale'
 
 " graphql
@@ -28,10 +29,6 @@ call plug#end()
 """
 " General Settings
 """
-" Neovim stuff
-let g:python_host_prog = trim(system('asdf which python2'))
-let g:python3_host_prog = trim(system('asdf which python3'))
-
 filetype plugin on
 
 syntax enable
@@ -151,3 +148,12 @@ lua <<EOF
     },
   }
 EOF
+
+" vimwiki
+let g:vimwiki_list = [
+\ {
+\   'path': '~/vimwiki/',
+\   'syntax': 'markdown',
+\   'ext': 'md'
+\ }
+\]
