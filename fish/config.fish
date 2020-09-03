@@ -21,6 +21,6 @@ alias tf='terraform'
 eval (starship init fish)
 
 # Machine specific settings
-if test -e local.fish
-  source local.fish
+if test -e ~/.config/fish/local.fish
+  source ~/.config/fish/local.fish
 end
