@@ -1,3 +1,6 @@
+fish_vi_key_bindings
+bind -M insert \cf end-of-line
+
 set -gx EDITOR nvim
 set -gx FZF_DEFAULT_COMMAND 'rg --files --hidden'
 set -gx PATH $HOME/.vim/plugged/fzf/bin $PATH
@@ -15,7 +18,9 @@ alias ls='exa'
 alias tmux='tmux -2'
 alias tf='terraform'
 
-# opam configuration
-source $HOME/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
-
 eval (starship init fish)
+
+# Machine specific settings
+if test -e local.fish
+  source local.fish
+end
