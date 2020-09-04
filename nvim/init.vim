@@ -7,7 +7,6 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'kirbycool/one-colors.vim'
-Plug 'mileszs/ack.vim'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
@@ -87,10 +86,6 @@ map <Leader>q :bd<Return>
 noremap <leader>h gT
 noremap <leader>l gt
 
-" Autocomplete
-inoremap <silent><expr><tab> pumvisible() ? "\<C-n>" : "\<tab>"
-inoremap <silent><expr><s-tab> pumvisible() ? "\<C-p>" : "\<s-tab>"
-
 """
 " Plugin settings
 """
@@ -98,17 +93,13 @@ inoremap <silent><expr><s-tab> pumvisible() ? "\<C-p>" : "\<s-tab>"
 " fzf
 nnoremap <silent> <leader>f :Files<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <leader>/ :Rg<Space>
 let g:fzf_preview_window = ''
 
 " vim-json
 let g:vim_json_syntax_conceal = 0
 
 " Ack
-if executable('rg')
-  let g:ackprg = 'rg --vimgrep'
-endif
-cnoreabbrev Ack Ack!
-nnoremap <leader>/ :Ack!<Space>
 
 " ALE
 hi ALESignColumnWithoutErrors ctermbg=black

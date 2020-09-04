@@ -19,8 +19,6 @@ let g:completion_chain_complete_list = {
     \    {'complete_items': ['lsp', 'buffer', 'path']},
     \]
     \}
-let g:completion_sort = 'none' " Default sort works pretty well
-let g:completion_trigger_keyword_length = 2
 let g:completion_confirm_key = '' " This messes with auto pairs newline binding
 " Use completion-nvim in every buffer
 autocmd BufEnter * lua require'completion'.on_attach()
