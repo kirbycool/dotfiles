@@ -46,6 +46,10 @@ lua << EOF
     on_attach = completion.on_attach;
     capabilities = {textDocument = {completion = {completionItem = {snippetSupport = false}}}};
   }
+  nvim_lsp.gopls.setup{
+    on_attach = completion.on_attach;
+    capabilities = {textDocument = {completion = {completionItem = {snippetSupport = false}}}};
+  }
 
   -- Let ALE handle diagnostics for now
   do

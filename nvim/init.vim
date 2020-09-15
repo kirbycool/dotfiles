@@ -124,7 +124,6 @@ let g:lightline = {
 function! LightlineRelativePath()
   return expand('%')
 endfunction
-nnoremap K :call CocAction("doHover")<CR>
 
 " Treesitter
 lua <<EOF
