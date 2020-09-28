@@ -5,7 +5,7 @@ Plug 'dense-analysis/ale'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'kirbycool/one-colors.vim'
 Plug 'machakann/vim-sandwich'
