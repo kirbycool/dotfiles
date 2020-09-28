@@ -1,18 +1,18 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'AndrewRadev/splitjoin.vim'
+Plug 'dense-analysis/ale'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'itchyny/lightline.vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'kirbycool/one-colors.vim'
+Plug 'machakann/vim-sandwich'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
-Plug 'machakann/vim-sandwich'
 Plug 'vimwiki/vimwiki'
-Plug 'w0rp/ale'
 
 " Autocomplete/lsp stuffs
 Plug 'neovim/nvim-lspconfig'
@@ -95,11 +95,6 @@ nnoremap <silent> <leader>f :Files<CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <leader>/ :Rg<Space>
 let g:fzf_preview_window = ''
-
-" vim-json
-let g:vim_json_syntax_conceal = 0
-
-" Ack
 
 " ALE
 hi ALESignColumnWithoutErrors ctermbg=black
