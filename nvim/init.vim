@@ -72,7 +72,9 @@ nnoremap <leader><S-J> <C-W><C-J>
 nnoremap <leader><S-K> <C-W><C-K>
 nnoremap <leader><S-L> <C-W><C-L>
 nnoremap <leader><S-H> <C-W><C-H>
-map <Leader>) :let &background = ( &background == "dark"? "light" : "dark" )<CR> " Toggle background
+
+nnoremap <leader>) :colorscheme onelight<CR>
+nnoremap <leader>( :colorscheme onedark<CR>
 
 set clipboard+=unnamedplus
 " Copy filename to clipboard
@@ -125,6 +127,9 @@ lua <<EOF
   require'nvim-treesitter.configs'.setup {
     highlight = {
         enable = true,
+    },
+    indent = {
+      enable = true,
     },
   }
 EOF

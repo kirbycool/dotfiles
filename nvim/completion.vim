@@ -54,6 +54,10 @@ lua << EOF
     on_attach = completion.on_attach;
     capabilities = {textDocument = {completion = {completionItem = {snippetSupport = false}}}};
   }
+  nvim_lsp.tsserver.setup{
+    on_attach = completion.on_attach;
+    capabilities = {textDocument = {completion = {completionItem = {snippetSupport = false}}}};
+  }
 
   -- Let ALE handle diagnostics for now
   do
@@ -62,8 +66,9 @@ lua << EOF
 EOF
 
 " Example bindings
-nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gD    <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> ga    <cmd>lua vim.lsp.buf.code_action()<CR>
 nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
 nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
