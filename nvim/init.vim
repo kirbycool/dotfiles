@@ -12,6 +12,7 @@ Plug 'machakann/vim-sandwich'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'vimwiki/vimwiki'
 
 " Autocomplete/lsp stuffs
@@ -121,6 +122,11 @@ let g:lightline = {
 function! LightlineRelativePath()
   return expand('%')
 endfunction
+
+" Fugitive
+" copy github links to clipboard
+nnoremap <leader>gl :.Gbrowse!<CR><CR>
+vnoremap <leader>gl :'<,'>Gbrowse!<CR>
 
 " Treesitter
 lua <<EOF
