@@ -27,9 +27,9 @@ autocmd BufEnter * lua require'completion'.on_attach()
 " nvim-lsp stuff
 """
 lua << EOF
-  local nvim_lsp = require 'nvim_lsp'
-  local configs = require 'nvim_lsp/configs'
-  local util = require 'nvim_lsp/util'
+  local lspconfig = require 'lspconfig'
+  local configs = require 'lspconfig/configs'
+  local util = require 'lspconfig/util'
   local completion = require 'completion'
 
   if not configs.sorbet then
@@ -42,22 +42,10 @@ lua << EOF
       }
   end
 
-  nvim_lsp.sorbet.setup{
-    on_attach = completion.on_attach;
-    capabilities = {textDocument = {completion = {completionItem = {snippetSupport = false}}}};
-  }
-  nvim_lsp.gopls.setup{
-    on_attach = completion.on_attach;
-    capabilities = {textDocument = {completion = {completionItem = {snippetSupport = false}}}};
-  }
-  nvim_lsp.rust_analyzer.setup{
-    on_attach = completion.on_attach;
-    capabilities = {textDocument = {completion = {completionItem = {snippetSupport = false}}}};
-  }
-  nvim_lsp.tsserver.setup{
-    on_attach = completion.on_attach;
-    capabilities = {textDocument = {completion = {completionItem = {snippetSupport = false}}}};
-  }
+  lspconfig.sorbet.setup{on_attach = completion.on_attach}
+  lspconfig.gopls.setup{on_attach = completion.on_attach}
+  lspconfig.rust_analyzer.setup{on_attach = completion.on_attach}
+  lspconfig.tsserver.setup{ on_attach = completion.on_attach}
 
   -- Let ALE handle diagnostics for now
   do

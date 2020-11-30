@@ -10,6 +10,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'kirbycool/one-colors.vim'
 Plug 'machakann/vim-sandwich'
 Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'junegunn/limelight.vim'
+Plug 'junegunn/goyo.vim'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
@@ -61,6 +63,8 @@ let mapleader = ","
 " Move screen lines instead of buffer lines
 nnoremap j gj
 nnoremap k gk
+vnoremap j gj
+vnoremap k gk
 
 inoremap <PageUp> <ESC>
 nnoremap <PageUp> <ESC>
@@ -81,13 +85,11 @@ set clipboard+=unnamedplus
 " Copy filename to clipboard
 nnoremap <leader>cf :let @* = expand('%')<CR>
 
-" Buffer nav
+" Buffer/tab nav
 map <Leader>j :b#<Return>
 map <Leader>q :bd<Return>
-
-" Go to tab
-noremap <leader>h gT
-noremap <leader>l gt
+map <Leader>h :bp<Return>
+map <Leader>l :bn<Return>
 
 """
 " Plugin settings
