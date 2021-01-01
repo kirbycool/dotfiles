@@ -1,0 +1,44 @@
+window:
+  startup_mode: Maximized
+
+shell:
+  program: /usr/bin/fish
+  args:
+    - -c
+    - "tmux attach || tmux"
+
+font:
+  size: 15.0
+
+  normal:
+    family: Source Code Variable
+    style: Regular
+
+  bold:
+    family: Source Code Variable
+    style: Bold
+
+colors:
+  primary:
+    background: '#282c34'
+    foreground: '#abb2bf'
+
+  normal:
+    black:   '#5c6370'
+    red:     '#e06c75'
+    green:   '#98c379'
+    yellow:  '#e5c07b'
+    blue:    '#61afef'
+    magenta: '#c678dd'
+    cyan:    '#56b6c2'
+    white:   '#abb2bf'
+
+  bright:
+    black:   '#828997'
+    red:     '#be5046'
+    green:   '#98c379'
+    yellow:  '#d19a66'
+    blue:    '#61afef'
+    magenta: '#c678dd'
+    cyan:    '#56b6c2'
+    white:   '#abb2bf'
