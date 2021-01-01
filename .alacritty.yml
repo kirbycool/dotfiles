@@ -24,7 +24,7 @@ colors:
     foreground: '#abb2bf'
 
   normal:
-    black:   '#5c6370'
+    black:   '#282c34'
     red:     '#e06c75'
     green:   '#98c379'
     yellow:  '#e5c07b'
@@ -34,7 +34,7 @@ colors:
     white:   '#abb2bf'
 
   bright:
-    black:   '#828997'
+    black:   '#282c34'
     red:     '#be5046'
     green:   '#98c379'
     yellow:  '#d19a66'
