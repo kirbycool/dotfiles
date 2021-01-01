@@ -88,8 +88,8 @@ nnoremap <leader>cf :let @* = expand('%')<CR>
 " Buffer/tab nav
 map <Leader>j :b#<Return>
 map <Leader>q :bd<Return>
-map <Leader>h :bp<Return>
-map <Leader>l :bn<Return>
+map <Leader>h :tabp<Return>
+map <Leader>l :tabn<Return>
 
 """
 " Plugin settings
