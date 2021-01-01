@@ -6,10 +6,14 @@ trim_trailing_whitespace = true
 indent_size = 4
 indent_style = space
 
-[*.{js,rb},Gemfile]
+[{*.rb,Gemfile}]
 indent_size = 2
 indent_style = space
 
-[{package.json,.travis.yml}]
+[{*.{js,jsx,ts,tsx},package.json}]
+indent_size = 2
+indent_style = space
+
+[*.yml]
 indent_size = 2
 indent_style = space
