@@ -14,7 +14,7 @@
 
 [core]
   commentchar = @
-  pager = diff-so-fancy | less --tabs=4 -RFX
+  pager = delta
 
 [pull]
   rebase = true
