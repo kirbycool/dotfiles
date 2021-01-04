@@ -2,7 +2,7 @@ window:
   startup_mode: Maximized
 
 shell:
-  program: /usr/bin/fish
+  program: fish
   args:
     - -c
     - "tmux attach || tmux"
