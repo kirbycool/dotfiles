@@ -19,12 +19,11 @@ Plug 'vimwiki/vimwiki'
 
 " Autocomplete/lsp stuffs
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
-Plug 'steelsojka/completion-buffers'
+Plug 'hrsh7th/nvim-compe'
 
 call plug#end()
 
-runtime completion.vim
+lua require('completion')
 
 """
 " General Settings
@@ -51,7 +50,6 @@ set completeopt-=preview
 """
 set termguicolors
 colorscheme onedark
-highlight SignColumn ctermbg=black
 
 let g:netrw_liststyle=3
 
@@ -104,6 +102,7 @@ let g:fzf_preview_window = ''
 " ALE
 hi ALESignColumnWithoutErrors ctermbg=black
 hi ALESignColumnWithErrors ctermbg=darkgrey
+set signcolumn=yes
 let g:ale_sign_column_always = 1
 let g:ale_change_sign_column_color = 1
 let g:ale_fix_on_save = 1
@@ -135,9 +134,6 @@ lua <<EOF
   require'nvim-treesitter.configs'.setup {
     highlight = {
         enable = true,
-    },
-    indent = {
-      enable = true,
     },
   }
 EOF
