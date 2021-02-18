@@ -103,7 +103,7 @@ noremap('c', '<PageUp>', '<C-c>')
 vim.g.fzf_preview_window = ''
 noremap('n', '<leader>f', ':Files<CR>')
 noremap('n', '<leader>b', ':Buffers<CR>')
-noremap('n', '<leader>/', ':Rg<Space>')
+noremap('n', '<leader>/', ':Rg<Space>', { noremap = true })
 
 -- ALE
 vim.g.ale_fix_on_save = 1
