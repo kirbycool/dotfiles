@@ -74,10 +74,10 @@ noremap('n', '<leader>h', ':tabp<CR>')
 noremap('n', '<leader>l', ':tabn<CR>')
 
 -- Switch splits
-noremap('n', '<S-J>', '<C-W><C-J>')
-noremap('n', '<S-K>', '<C-W><C-K>')
-noremap('n', '<S-L>', '<C-W><C-L>')
-noremap('n', '<S-H>', '<C-W><C-H>')
+noremap('n', '<leader><S-J>', '<C-W><C-J>')
+noremap('n', '<leader><S-K>', '<C-W><C-K>')
+noremap('n', '<leader><S-L>', '<C-W><C-L>')
+noremap('n', '<leader><S-H>', '<C-W><C-H>')
 
 noremap('n', 'e', ':Texplore<CR>')
 
@@ -114,7 +114,7 @@ vim.g.lightline = {
   active = {
     left = {
       {'mode', 'paste'},
-      {'gitbranch', 'readonly', 'relative_path', 'modified'}
+      {'gitbranch', 'readonly', 'relativepath', 'modified'}
     },
     right = {
       {'lineinfo'},
