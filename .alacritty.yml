@@ -6,7 +6,7 @@ references:
         foreground: '#abb2bf'
 
       normal:
-        black:   '#282c34'
+        black:   '#828997'
         red:     '#e06c75'
         green:   '#98c379'
         yellow:  '#e5c07b'
@@ -16,7 +16,7 @@ references:
         white:   '#abb2bf'
 
       bright:
-        black:   '#282c34'
+        black:   '#5c6370'
         red:     '#be5046'
         green:   '#98c379'
         yellow:  '#d19a66'
@@ -54,13 +54,13 @@ window:
   startup_mode: Maximized
 
 shell:
-  program: fish
+  program: /usr/local/bin/fish
   args:
     - -c
-    - "tmux attach || tmux"
+    - "/usr/local/bin/tmux attach || /usr/local/bin/tmux"
 
 font:
-  size: 15.0
+  size: 17.0
 
   normal:
     family: Source Code Variable
