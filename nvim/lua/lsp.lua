@@ -19,7 +19,7 @@ lsp.tsserver.setup{}
 
 -- Let ALE handle diagnostics for now
 do
-  vim.lsp.callbacks['textDocument/publishDiagnostics'] = nil
+  vim.lsp.handlers['textDocument/publishDiagnostics'] = nil
 end
 
 -- LSP Bindings

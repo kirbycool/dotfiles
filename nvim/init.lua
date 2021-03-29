@@ -79,7 +79,7 @@ noremap('n', '<leader><S-K>', '<C-W><C-K>')
 noremap('n', '<leader><S-L>', '<C-W><C-L>')
 noremap('n', '<leader><S-H>', '<C-W><C-H>')
 
-noremap('n', 'e', ':Texplore<CR>')
+noremap('n', '<leader>e', ':Texplore<CR>')
 
 noremap('n', '<leader>)', ':colorscheme onelight<CR>')
 noremap('n', '<leader>(', ':colorscheme onedark<CR>')
