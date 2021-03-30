@@ -109,7 +109,12 @@ noremap('n', '<leader>/', ':Rg<Space>', { noremap = true })
 vim.g.ale_fix_on_save = 1
 
 -- lightline
+vim.o.showtabline = 2
 vim.g.lightline = {
+  enable = {
+    statusline = 1,
+    tabline = 0
+  },
   colorscheme = 'one',
   active = {
     left = {
@@ -121,19 +126,14 @@ vim.g.lightline = {
       {'percent'}
     }
   },
+  component = {
+    filename = '%t',
+    relativepath = '%f'
+  },
   component_function = {
     gitbranch = 'fugitive#head',
-    relativepath = 'LightlineRelativePath'
-  }
+  },
 }
-vim.api.nvim_exec(
-  [[
-    function! LightlineRelativePath()
-      return expand('%')
-    endfunction
-  ]],
-  true
-)
 
 -- Fugitive
 -- Copy gitub links to clipboard
