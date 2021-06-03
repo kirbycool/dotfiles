@@ -18,7 +18,6 @@ paq('junegunn/fzf.vim')
 paq('kirbycool/one-colors.vim')
 paq('machakann/vim-sandwich')
 paq('nvim-treesitter/nvim-treesitter')
-paq('junegunn/limelight.vim')
 paq('junegunn/goyo.vim')
 paq('tpope/vim-eunuch')
 paq('tpope/vim-fugitive')
@@ -43,6 +42,7 @@ vim.o.smartcase = true
 vim.o.hlsearch = false
 vim.o.incsearch = false
 vim.o.showmode = false
+vim.o.hidden = true
 
 vim.wo.number = true
 vim.wo.signcolumn = 'yes'
@@ -69,9 +69,10 @@ noremap('n', 'k', 'gk')
 noremap('v', 'j', 'gj')
 noremap('v', 'j', 'gj')
 
--- Tab navigation
-noremap('n', '<leader>h', ':tabp<CR>')
-noremap('n', '<leader>l', ':tabn<CR>')
+-- buffer navigation
+noremap('n', '<leader>h', ':bn<CR>')
+noremap('n', '<leader>l', ':bp<CR>')
+noremap('n', '<leader>j', ':b#<CR>')
 
 -- Switch splits
 noremap('n', '<leader><S-J>', '<C-W><C-J>')
@@ -109,7 +110,6 @@ noremap('n', '<leader>/', ':Rg<Space>', { noremap = true })
 vim.g.ale_fix_on_save = 1
 
 -- lightline
-vim.o.showtabline = 2
 vim.g.lightline = {
   enable = {
     statusline = 1,
