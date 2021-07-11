@@ -1,3 +1,5 @@
+DATA_PATH = vim.fn.stdpath("data")
+
 vim.cmd('packadd paq-nvim')
 local paq = require('paq-nvim').paq
 local utils = require('utils')
@@ -5,8 +7,6 @@ local noremap = utils.noremap
 
 paq{'savq/paq-nvim', opt=true}
 
-paq('AndrewRadev/splitjoin.vim')
-paq('dense-analysis/ale')
 paq('editorconfig/editorconfig-vim')
 paq('itchyny/lightline.vim')
 paq('jiangmiao/auto-pairs')
@@ -26,6 +26,7 @@ paq('vimwiki/vimwiki')
 
 -- Autocomplete/lsp stuff
 paq('neovim/nvim-lspconfig')
+paq('kabouzeid/nvim-lspinstall')
 paq('hrsh7th/nvim-compe')
 
 -- Load other config files
@@ -107,7 +108,7 @@ noremap('n', '<leader>b', ':Buffers<CR>')
 noremap('n', '<leader>/', ':Rg<Space>', { noremap = true })
 
 -- ALE
-vim.g.ale_fix_on_save = 1
+-- vim.g.ale_fix_on_save = 1
 
 -- lightline
 vim.g.lightline = {

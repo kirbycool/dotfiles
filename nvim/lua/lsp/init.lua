@@ -1,6 +1,17 @@
+require ('lsp/tsserver')
+require ('lsp/efm')
+
 local lsp = require('lspconfig')
 local utils = require('utils')
 local noremap = utils.noremap
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics,
+  {
+    virtual_text = false,
+    signs = true,
+  }
+)
 
 if not lsp.sorbet then
     lsp.configs.sorbet = {
@@ -15,12 +26,6 @@ end
 lsp.sorbet.setup{}
 lsp.gopls.setup{}
 lsp.rust_analyzer.setup{}
-lsp.tsserver.setup{}
-
--- Let ALE handle diagnostics for now
-do
-  vim.lsp.handlers['textDocument/publishDiagnostics'] = function() end
-end
 
 -- LSP Bindings
 noremap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>')
