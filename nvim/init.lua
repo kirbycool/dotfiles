@@ -28,6 +28,7 @@ paq('vimwiki/vimwiki')
 paq('neovim/nvim-lspconfig')
 paq('kabouzeid/nvim-lspinstall')
 paq('hrsh7th/nvim-compe')
+paq('folke/trouble.nvim')
 
 -- Load other config files
 require('completion')
@@ -149,3 +150,11 @@ vim.g.vimwiki_list = {
     ext = 'md'
   }
 }
+
+-- trouble.nvim
+require("trouble").setup {
+  icons = false,
+  use_lsp_diagnostic_signs = true
+}
+
+noremap('n', '<leader>t', ':Trouble<CR>')

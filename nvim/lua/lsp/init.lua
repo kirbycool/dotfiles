@@ -1,9 +1,16 @@
-require ('lsp/tsserver')
-require ('lsp/efm')
-
 local lsp = require('lspconfig')
 local utils = require('utils')
 local noremap = utils.noremap
+
+-- Ruby
+require('lsp/sorbet')
+
+-- JS/TS
+require('lsp/tsserver')
+require('lsp/efm')
+
+lsp.gopls.setup{}
+lsp.rust_analyzer.setup{}
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics,
@@ -13,19 +20,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   }
 )
 
-if not lsp.sorbet then
-    lsp.configs.sorbet = {
-      default_config = {
-        cmd = {'/Users/thanx/.asdf/installs/ruby/2.5.1/lib/ruby/gems/2.5.0/gems/sorbet-static-0.5.5648-universal-darwin-18/libexec/sorbet', 'tc', '--lsp', '--enable-all-experimental-lsp-features', '--disable-watchman'};
-        filetypes = {'ruby'};
-        root_dir = lsp.util.root_pattern('sorbet');
-      };
-    }
-end
-
-lsp.sorbet.setup{}
-lsp.gopls.setup{}
-lsp.rust_analyzer.setup{}
 
 -- LSP Bindings
 noremap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>')
