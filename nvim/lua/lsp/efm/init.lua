@@ -1,11 +1,13 @@
 local js = require('lsp/efm/javascript')
+local ruby = require('lsp/efm/ruby')
 
 require('lspconfig').efm.setup {
   -- init_options = {initializationOptions},
   cmd = { DATA_PATH .. "/lspinstall/efm/efm-langserver" },
   init_options = { documentFormatting = true, codeAction = false },
   filetypes = {
-    unpack(js.filetypes)
+    unpack(js.filetypes),
+    unpack(ruby.filetypes),
   },
   settings = {
     rootMarkers = { ".git/" },
@@ -17,6 +19,8 @@ require('lspconfig').efm.setup {
       typescript = js.config,
       ["typescript.tsx"] = js.config,
       typescriptreact = js.config,
+
+      ruby = ruby.config,
     },
   },
 }

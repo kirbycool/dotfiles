@@ -1,4 +1,6 @@
-require('lspconfig').tsserver.setup {
+local lspconfig = require('lspconfig')
+
+lspconfig.tsserver.setup {
   init_options = { documentFormatting = false, codeAction = true },
   filetypes = {
     "javascript",
@@ -8,4 +10,5 @@ require('lspconfig').tsserver.setup {
     "typescriptreact",
     "typescript.tsx",
   },
+  root_dir = lspconfig.util.root_pattern('tsconfig.json'),
 }
