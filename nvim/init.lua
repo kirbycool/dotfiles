@@ -49,7 +49,7 @@ vim.o.hidden = true
 vim.wo.number = true
 vim.wo.signcolumn = 'yes'
 vim.wo.foldmethod = 'expr'
-vim.wo.foldexpr = vim.api.nvim_eval('nvim_treesitter#foldexpr()')
+vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
 
 -- Use the system clipboard for everything
 vim.cmd('set clipboard+=unnamedplus')
