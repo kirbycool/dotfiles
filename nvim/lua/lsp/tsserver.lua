@@ -11,4 +11,9 @@ lspconfig.tsserver.setup {
     "typescript.tsx",
   },
   root_dir = lspconfig.util.root_pattern('tsconfig.json'),
+
+  on_attach = function(client)
+    -- Disable formatting by pretending ther server can't format
+    client.resolved_capabilities.document_formatting = false
+  end
 }

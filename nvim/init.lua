@@ -1,34 +1,37 @@
 DATA_PATH = vim.fn.stdpath("data")
 
-vim.cmd('packadd paq-nvim')
-local paq = require('paq-nvim').paq
+vim.cmd('packadd packer.nvim')
+local packer = require('packer')
 local utils = require('utils')
 local noremap = utils.noremap
 
-paq{'savq/paq-nvim', opt=true}
+packer.startup(function()
+  use('wbthomason/packer.nvim')
 
-paq('editorconfig/editorconfig-vim')
-paq('itchyny/lightline.vim')
-paq('jiangmiao/auto-pairs')
-paq(
+  use('editorconfig/editorconfig-vim')
+use('itchyny/lightline.vim')
+use('jiangmiao/auto-pairs')
+use {
   'junegunn/fzf',
-  { hook = function() vim.api.nvim_exec('fzf#install()') end }
-)
-paq('junegunn/fzf.vim')
-paq('kirbycool/one-colors.vim')
-paq('machakann/vim-sandwich')
-paq('nvim-treesitter/nvim-treesitter')
-paq('junegunn/goyo.vim')
-paq('tpope/vim-eunuch')
-paq('tpope/vim-fugitive')
-paq('tpope/vim-rhubarb')
-paq('vimwiki/vimwiki')
+  run = function() vim.api.nvim_exec('fzf#install()') end
+}
+use('junegunn/fzf.vim')
+use('kirbycool/one-colors.vim')
+use('machakann/vim-sandwich')
+use('nvim-treesitter/nvim-treesitter')
+use('junegunn/goyo.vim')
+use('tpope/vim-eunuch')
+use('tpope/vim-fugitive')
+use('tpope/vim-rhubarb')
+use('vimwiki/vimwiki')
 
 -- Autocomplete/lsp stuff
-paq('neovim/nvim-lspconfig')
-paq('kabouzeid/nvim-lspinstall')
-paq('hrsh7th/nvim-compe')
-paq('folke/trouble.nvim')
+use('neovim/nvim-lspconfig')
+use('kabouzeid/nvim-lspinstall')
+use('hrsh7th/nvim-compe')
+use('folke/trouble.nvim')
+
+end)
 
 -- Load other config files
 require('completion')
