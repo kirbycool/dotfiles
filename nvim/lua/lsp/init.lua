@@ -1,36 +1,32 @@
-local lsp = require('lspconfig')
-local utils = require('utils')
+local lsp = require("lspconfig")
+local utils = require("utils")
 local noremap = utils.noremap
 
 -- Diagnostics/formatting
-require('lsp/null_ls')
+require("lsp/null_ls")
 
 -- Ruby
-require('lsp/sorbet')
+require("lsp/sorbet")
 
 -- JS/TS
-require('lsp/tsserver')
+require("lsp/tsserver")
 
-lsp.gopls.setup{}
-lsp.rust_analyzer.setup{}
+lsp.gopls.setup({})
+lsp.rust_analyzer.setup({})
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics,
-  {
-    virtual_text = false,
-    signs = true,
-    underline = true,
-  }
-)
-
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+	virtual_text = false,
+	signs = true,
+	underline = true,
+})
 
 -- LSP Bindings
-noremap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>')
-noremap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>')
-noremap('n', 'ga', '<Cmd>lua vim.lsp.buf.code_action()<CR>')
-noremap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>')
-noremap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>')
-noremap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>')
-noremap('n', '<leader>td', '<cmd>lua vim.lsp.buf.type_definition()<CR>')
-noremap('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<CR>')
-noremap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>')
+noremap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>")
+noremap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>")
+noremap("n", "ga", "<Cmd>lua vim.lsp.buf.code_action()<CR>")
+noremap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>")
+noremap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
+noremap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
+noremap("n", "<leader>td", "<cmd>lua vim.lsp.buf.type_definition()<CR>")
+noremap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
+noremap("n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>")
