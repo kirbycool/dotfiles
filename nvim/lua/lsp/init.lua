@@ -2,12 +2,14 @@ local lsp = require('lspconfig')
 local utils = require('utils')
 local noremap = utils.noremap
 
+-- Diagnostics/formatting
+require('lsp/null_ls')
+
 -- Ruby
 require('lsp/sorbet')
 
 -- JS/TS
 require('lsp/tsserver')
-require('lsp/efm')
 
 lsp.gopls.setup{}
 lsp.rust_analyzer.setup{}

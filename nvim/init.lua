@@ -9,27 +9,31 @@ packer.startup(function()
   use('wbthomason/packer.nvim')
 
   use('editorconfig/editorconfig-vim')
-use('itchyny/lightline.vim')
-use('jiangmiao/auto-pairs')
-use {
-  'junegunn/fzf',
-  run = function() vim.api.nvim_exec('fzf#install()') end
-}
-use('junegunn/fzf.vim')
-use('kirbycool/one-colors.vim')
-use('machakann/vim-sandwich')
-use('nvim-treesitter/nvim-treesitter')
-use('junegunn/goyo.vim')
-use('tpope/vim-eunuch')
-use('tpope/vim-fugitive')
-use('tpope/vim-rhubarb')
-use('vimwiki/vimwiki')
+  use('itchyny/lightline.vim')
+  use('jiangmiao/auto-pairs')
+  use {
+    'junegunn/fzf',
+    run = function() vim.api.nvim_exec('fzf#install()') end
+  }
+  use('junegunn/fzf.vim')
+  use('kirbycool/one-colors.vim')
+  use('machakann/vim-sandwich')
+  use('nvim-treesitter/nvim-treesitter')
+  use('junegunn/goyo.vim')
+  use('tpope/vim-eunuch')
+  use('tpope/vim-fugitive')
+  use('tpope/vim-rhubarb')
+  use('vimwiki/vimwiki')
 
--- Autocomplete/lsp stuff
-use('neovim/nvim-lspconfig')
-use('kabouzeid/nvim-lspinstall')
-use('hrsh7th/nvim-compe')
-use('folke/trouble.nvim')
+  -- Autocomplete/lsp stuff
+  use('neovim/nvim-lspconfig')
+  use('kabouzeid/nvim-lspinstall')
+  use('hrsh7th/nvim-compe')
+  use('folke/trouble.nvim')
+  use{
+    'jose-elias-alvarez/null-ls.nvim',
+    requires = {'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig'}
+  }
 
 end)
 
