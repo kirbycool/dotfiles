@@ -11,7 +11,10 @@ null_ls.config({
 		builtins.diagnostics.eslint.with({ command = "./node_modules/.bin/eslint" }),
 
 		-- Ruby
-		builtins.diagnostics.rubocop,
+		builtins.diagnostics.rubocop.with({
+			command = "bundle",
+			args = { "exec", "rubocop", "-f", "json", "--stdin", "$FILENAME" },
+		}),
 
 		-- Lua
 		builtins.diagnostics.selene,
