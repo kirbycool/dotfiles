@@ -25,13 +25,13 @@ references:
         cyan:    '#56b6c2'
         white:   '#abb2bf'
 
-    dark: &onelight
+    light: &onelight
       primary:
         background: '#fafafa'
         foreground: '#383a42'
 
       normal:
-        black:   '#fafafa'
+        black:   '#383a42'
         red:     '#e45649'
         green:   '#50a14f'
         yellow:  '#986801'
@@ -41,7 +41,7 @@ references:
         white:   '#abb2bf'
 
       bright:
-        black:   '#fafafa'
+        black:   '#383a42'
         red:     '#ca1243'
         green:   '#50a14f'
         yellow:  '#c18401'
