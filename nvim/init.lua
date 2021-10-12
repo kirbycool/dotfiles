@@ -30,7 +30,9 @@ packer.startup(function()
 	-- Autocomplete/lsp stuff
 	use("neovim/nvim-lspconfig")
 	use("kabouzeid/nvim-lspinstall")
-	use("hrsh7th/nvim-compe")
+	use("hrsh7th/nvim-cmp")
+	use("hrsh7th/cmp-buffer")
+	use("hrsh7th/cmp-nvim-lsp")
 	use("folke/trouble.nvim")
 	use({
 		"jose-elias-alvarez/null-ls.nvim",
