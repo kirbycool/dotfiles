@@ -1,10 +1,9 @@
 -- Config for null-ls.nvim
-local lspconfig = require("lspconfig")
 local null_ls = require("null-ls")
 
 local builtins = null_ls.builtins
 
-null_ls.config({
+null_ls.setup({
 	sources = {
 		-- JS/TS
 		builtins.formatting.prettier.with({ command = "./node_modules/.bin/prettier" }),
@@ -14,6 +13,9 @@ null_ls.config({
 		builtins.diagnostics.rubocop.with({
 			command = "bundle",
 			args = { "exec", "rubocop", "-f", "json", "--stdin", "$FILENAME" },
+      condition = function(utils)
+        return utils.root_has_file('.rubocop.yml')
+      end
 		}),
 
 		-- Lua
@@ -21,8 +23,6 @@ null_ls.config({
 		builtins.formatting.stylua,
 	},
 })
-
-lspconfig["null-ls"].setup({})
 
 vim.api.nvim_exec(
 	[[

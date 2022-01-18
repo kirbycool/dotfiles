@@ -1,5 +1,3 @@
-DATA_PATH = vim.fn.stdpath("data")
-
 vim.cmd("packadd packer.nvim")
 local packer = require("packer")
 local utils = require("utils")
@@ -12,10 +10,8 @@ packer.startup(function()
 	use("itchyny/lightline.vim")
 	use("jiangmiao/auto-pairs")
 	use({
-		"junegunn/fzf",
-		run = function()
-			vim.api.nvim_exec("fzf#install()")
-		end,
+		"ibhagwan/fzf-lua",
+    requires = { "vijaymarupudi/nvim-fzf" },
 	})
 	use("junegunn/fzf.vim")
 	use("kirbycool/one-colors.vim")
@@ -29,11 +25,10 @@ packer.startup(function()
 
 	-- Autocomplete/lsp stuff
 	use("neovim/nvim-lspconfig")
-	use("kabouzeid/nvim-lspinstall")
+	use("williamboman/nvim-lsp-installer")
 	use("hrsh7th/nvim-cmp")
 	use("hrsh7th/cmp-buffer")
 	use("hrsh7th/cmp-nvim-lsp")
-	use("folke/trouble.nvim")
 	use({
 		"jose-elias-alvarez/null-ls.nvim",
 		requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
@@ -106,15 +101,23 @@ noremap("v", "<PageUp>", "<ESC>")
 noremap("o", "<PageUp>", "<ESC>")
 noremap("c", "<PageUp>", "<C-c>")
 
+-- diagnostics
+noremap("n", "<leader>t", ":lopen<CR>")
+noremap("n", "<leader>e", ":lua vim.diagnostic.open_float()<CR>")
+
 --
 -- Plugin settings
 --
 
 -- fzf
-vim.g.fzf_preview_window = ""
-noremap("n", "<leader>f", ":Files<CR>")
-noremap("n", "<leader>b", ":Buffers<CR>")
-noremap("n", "<leader>/", ":Rg<Space>", { noremap = true })
+require('fzf-lua').setup {
+  files = { previewer = false },
+  grep = { previewer = false },
+  lsp = { previewer = false },
+}
+noremap("n", "<leader>f", "<cmd>lua require('fzf-lua').files()<CR>")
+noremap("n", "<leader>b", "<cmd>lua require('fzf-lua').buffers()<CR>")
+noremap("n", "<leader>/", "<cmd>lua require('fzf-lua').grep()<CR>")
 
 -- ALE
 -- vim.g.ale_fix_on_save = 1
@@ -158,11 +161,3 @@ vim.g.vimwiki_list = {
 		ext = "md",
 	},
 }
-
--- trouble.nvim
-require("trouble").setup({
-	icons = false,
-	use_lsp_diagnostic_signs = true,
-})
-
-noremap("n", "<leader>t", ":Trouble<CR>")
