@@ -11,7 +11,7 @@ packer.startup(function()
 	use("jiangmiao/auto-pairs")
 	use({
 		"ibhagwan/fzf-lua",
-    requires = { "vijaymarupudi/nvim-fzf" },
+		requires = { "vijaymarupudi/nvim-fzf" },
 	})
 	use("junegunn/fzf.vim")
 	use("kirbycool/one-colors.vim")
@@ -29,6 +29,8 @@ packer.startup(function()
 	use("hrsh7th/nvim-cmp")
 	use("hrsh7th/cmp-buffer")
 	use("hrsh7th/cmp-nvim-lsp")
+	use("hrsh7th/cmp-vsnip")
+	use("hrsh7th/vim-vsnip")
 	use({
 		"jose-elias-alvarez/null-ls.nvim",
 		requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
@@ -110,11 +112,11 @@ noremap("n", "<leader>e", ":lua vim.diagnostic.open_float()<CR>")
 --
 
 -- fzf
-require('fzf-lua').setup {
-  files = { previewer = false },
-  grep = { previewer = false },
-  lsp = { previewer = false },
-}
+require("fzf-lua").setup({
+	files = { previewer = false },
+	grep = { previewer = false },
+	lsp = { previewer = false },
+})
 noremap("n", "<leader>f", "<cmd>lua require('fzf-lua').files()<CR>")
 noremap("n", "<leader>b", "<cmd>lua require('fzf-lua').buffers()<CR>")
 noremap("n", "<leader>/", "<cmd>lua require('fzf-lua').grep()<CR>")
@@ -150,7 +152,7 @@ vim.g.lightline = {
 
 -- Fugitive
 -- Copy gitub links to clipboard
-noremap("n", "<leader>gl", ":.Gbrowse!<CR><CR>")
+noremap("n", "<leader>gl", ":.GBrowse!<CR><CR>")
 noremap("v", "<leader>gl", ":'<,'>Gbrowse!<CR>")
 
 -- vimwiki

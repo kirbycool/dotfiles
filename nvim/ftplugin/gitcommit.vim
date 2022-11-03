@@ -1,1 +1,1 @@
-setlocal wrap formatoptions<
+setlocal formatoptions-=t formatoptions-=l
