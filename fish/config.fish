@@ -10,6 +10,9 @@ set -gx PATH $GOPATH/bin $PATH
 
 set -gx PATH $HOME/.cargo/bin $PATH
 
+# Random local binaries
+set -gx PATH $HOME/.local/bin $PATH
+
 set -gx ASDF_ROOT ~/.asdf
 source ~/.asdf/asdf.fish
 
@@ -18,9 +21,9 @@ alias ls='exa'
 alias tmux='tmux -2'
 alias tf='terraform'
 
-eval (starship init fish)
-
 # Machine specific settings
 if test -e ~/.config/fish/local.fish
   source ~/.config/fish/local.fish
 end
+
+eval (starship init fish)
