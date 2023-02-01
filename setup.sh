@@ -11,3 +11,5 @@ ln -s $DOTFILES_DIR/.tmux.conf ~/.tmux.conf
 ln -s $DOTFILES_DIR/nvim/* ~/.config/nvim/
 
 ln -s $DOTFILES_DIR/fish/* ~/.config/fish/
+
+ln -s $DOTFILES_DIR/zellij/* ~/.config/zellij/
