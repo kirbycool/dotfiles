@@ -3,7 +3,9 @@ local utils = require("utils")
 local noremap = utils.noremap
 local lsp_installer = require("nvim-lsp-installer")
 
-lsp_installer.on_server_ready(function(server) server:setup{} end)
+lsp_installer.on_server_ready(function(server)
+	server:setup({})
+end)
 
 -- Diagnostic settings
 vim.api.nvim_exec(
@@ -20,16 +22,16 @@ vim.api.nvim_exec(
 )
 
 -- LSP Bindings
-noremap("n", "gD", "<Cmd>lua require('fzf-lua').lsp_declarations()<CR>")
-noremap("n", "gd", "<Cmd>lua require('fzf-lua').lsp_definitions()<CR>")
-noremap("n", "ga", "<Cmd>lua require('fzf-lua').lsp_code_actions()<CR>")
-noremap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>")
-noremap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>")
-noremap("n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>")
-noremap("n", "<leader>td", "<cmd>lua vim.lsp.buf.type_definition()<CR>")
-noremap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>")
-noremap("n", "gr", "<cmd>lua require('fzf-lua').lsp_references()<CR>")
-
+local telescope_builtin = require("telescope.builtin")
+vim.keymap.set("n", "K", vim.lsp.buf.hover)
+vim.keymap.set("n", "gi", vim.lsp.buf.implementation)
+vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help)
+vim.keymap.set("n", "<leader>td", vim.lsp.buf.type_definition)
+vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename)
+vim.keymap.set("n", "gd", telescope_builtin.lsp_definitions)
+vim.keymap.set("n", "gD", telescope_builtin.lsp_type_definitions)
+vim.keymap.set("n", "gr", telescope_builtin.lsp_references)
+vim.keymap.set("n", "ga", vim.lsp.buf.code_action)
 
 lsp.gopls.setup({})
 lsp.rust_analyzer.setup({})

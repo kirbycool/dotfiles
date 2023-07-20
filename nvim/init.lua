@@ -10,18 +10,22 @@ packer.startup(function()
 	use("itchyny/lightline.vim")
 	use("jiangmiao/auto-pairs")
 	use({
-		"ibhagwan/fzf-lua",
-		requires = { "vijaymarupudi/nvim-fzf" },
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.2",
+		requires = { "nvim-lua/plenary.nvim" },
 	})
-	use("junegunn/fzf.vim")
+	use({ "nvim-telescope/telescope-ui-select.nvim" })
 	use("kirbycool/one-colors.vim")
 	use("machakann/vim-sandwich")
-	use("nvim-treesitter/nvim-treesitter")
 	use("junegunn/goyo.vim")
 	use("tpope/vim-eunuch")
 	use("tpope/vim-fugitive")
 	use("tpope/vim-rhubarb")
 	use("vimwiki/vimwiki")
+
+	-- Treesitter stuff
+	use("nvim-treesitter/nvim-treesitter")
+	use("nvim-treesitter/playground")
 
 	-- Autocomplete/lsp stuff
 	use("neovim/nvim-lspconfig")
@@ -111,15 +115,12 @@ noremap("n", "<leader>e", ":lua vim.diagnostic.open_float()<CR>")
 -- Plugin settings
 --
 
--- fzf
-require("fzf-lua").setup({
-	files = { previewer = false },
-	grep = { previewer = false },
-	lsp = { previewer = false },
-})
-noremap("n", "<leader>f", "<cmd>lua require('fzf-lua').files()<CR>")
-noremap("n", "<leader>b", "<cmd>lua require('fzf-lua').buffers()<CR>")
-noremap("n", "<leader>/", "<cmd>lua require('fzf-lua').grep()<CR>")
+-- Telescope
+require("telescope").load_extension("ui-select")
+local telescope_builtin = require("telescope.builtin")
+vim.keymap.set("n", "<leader>f", telescope_builtin.find_files)
+vim.keymap.set("n", "<leader>b", telescope_builtin.buffers)
+vim.keymap.set("n", "<leader>/", telescope_builtin.live_grep)
 
 -- ALE
 -- vim.g.ale_fix_on_save = 1
