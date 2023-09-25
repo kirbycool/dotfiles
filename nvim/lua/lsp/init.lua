@@ -1,11 +1,9 @@
 local lsp = require("lspconfig")
 local utils = require("utils")
 local noremap = utils.noremap
-local lsp_installer = require("nvim-lsp-installer")
+local mason = require("mason")
 
-lsp_installer.on_server_ready(function(server)
-	server:setup({})
-end)
+mason.setup()
 
 -- Diagnostic settings
 vim.api.nvim_exec(

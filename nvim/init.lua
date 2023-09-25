@@ -1,45 +1,56 @@
-vim.cmd("packadd packer.nvim")
-local packer = require("packer")
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
+end
+vim.opt.rtp:prepend(lazypath)
+
+local lazy = require("lazy")
 local utils = require("utils")
 local noremap = utils.noremap
 
-packer.startup(function()
-	use("wbthomason/packer.nvim")
+vim.g.mapleader = ","
 
-	use("editorconfig/editorconfig-vim")
-	use("itchyny/lightline.vim")
-	use("jiangmiao/auto-pairs")
-	use({
+lazy.setup({
+	"editorconfig/editorconfig-vim",
+	"itchyny/lightline.vim",
+	"jiangmiao/auto-pairs",
+	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.2",
-		requires = { "nvim-lua/plenary.nvim" },
-	})
-	use({ "nvim-telescope/telescope-ui-select.nvim" })
-	use("kirbycool/one-colors.vim")
-	use("machakann/vim-sandwich")
-	use("junegunn/goyo.vim")
-	use("tpope/vim-eunuch")
-	use("tpope/vim-fugitive")
-	use("tpope/vim-rhubarb")
-	use("vimwiki/vimwiki")
+		dependencies = { "nvim-lua/plenary.nvim" },
+	},
+	"nvim-telescope/telescope-ui-select.nvim",
+	"kirbycool/one-colors.vim",
+	"machakann/vim-sandwich",
+	"junegunn/goyo.vim",
+	"tpope/vim-eunuch",
+	"tpope/vim-fugitive",
+	"tpope/vim-rhubarb",
+	"vimwiki/vimwiki",
 
 	-- Treesitter stuff
-	use("nvim-treesitter/nvim-treesitter")
-	use("nvim-treesitter/playground")
+	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+	"nvim-treesitter/playground",
 
 	-- Autocomplete/lsp stuff
-	use("neovim/nvim-lspconfig")
-	use("williamboman/nvim-lsp-installer")
-	use("hrsh7th/nvim-cmp")
-	use("hrsh7th/cmp-buffer")
-	use("hrsh7th/cmp-nvim-lsp")
-	use("hrsh7th/cmp-vsnip")
-	use("hrsh7th/vim-vsnip")
-	use({
+	"neovim/nvim-lspconfig",
+	"williamboman/mason.nvim",
+	"hrsh7th/nvim-cmp",
+	"hrsh7th/cmp-buffer",
+	"hrsh7th/cmp-nvim-lsp",
+	"hrsh7th/cmp-vsnip",
+	"hrsh7th/vim-vsnip",
+	{
 		"jose-elias-alvarez/null-ls.nvim",
-		requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-	})
-end)
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+	},
+})
 
 -- Load other config files
 require("completion")
@@ -73,7 +84,6 @@ vim.cmd("colorscheme onedark")
 --
 -- Mappings
 --
-vim.g.mapleader = ","
 
 -- Move screen lines
 noremap("n", "j", "gj")
