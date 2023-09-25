@@ -119,7 +119,9 @@ noremap("n", "<leader>e", ":lua vim.diagnostic.open_float()<CR>")
 require("telescope").load_extension("ui-select")
 local telescope_builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>f", telescope_builtin.find_files)
-vim.keymap.set("n", "<leader>b", telescope_builtin.buffers)
+vim.keymap.set("n", "<leader>b", function()
+	telescope_builtin.buffers({ ignore_current_buffer = true, sort_mru = true })
+end)
 vim.keymap.set("n", "<leader>/", telescope_builtin.live_grep)
 
 -- ALE
