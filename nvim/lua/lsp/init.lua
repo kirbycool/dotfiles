@@ -1,6 +1,4 @@
 local lsp = require("lspconfig")
-local utils = require("utils")
-local noremap = utils.noremap
 local mason = require("mason")
 
 mason.setup()

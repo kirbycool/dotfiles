@@ -17,9 +17,18 @@ local noremap = utils.noremap
 
 vim.g.mapleader = ","
 
+-- vimwiki
+vim.g.vimwiki_list = {
+	{
+		path = "~/vimwiki/",
+		syntax = "markdown",
+		ext = "md",
+	},
+}
+
 lazy.setup({
 	"editorconfig/editorconfig-vim",
-	"itchyny/lightline.vim",
+	"nvim-lualine/lualine.nvim",
 	"jiangmiao/auto-pairs",
 	{
 		"nvim-telescope/telescope.nvim",
@@ -117,10 +126,6 @@ noremap("v", "<PageUp>", "<ESC>")
 noremap("o", "<PageUp>", "<ESC>")
 noremap("c", "<PageUp>", "<C-c>")
 
--- diagnostics
-noremap("n", "<leader>t", ":lopen<CR>")
-noremap("n", "<leader>e", ":lua vim.diagnostic.open_float()<CR>")
-
 --
 -- Plugin settings
 --
@@ -133,46 +138,26 @@ vim.keymap.set("n", "<leader>b", function()
 	telescope_builtin.buffers({ ignore_current_buffer = true, sort_mru = true })
 end)
 vim.keymap.set("n", "<leader>/", telescope_builtin.live_grep)
+vim.keymap.set("n", "<leader>e", function()
+	telescope_builtin.diagnostics({ bufnr = 0 })
+end)
 
 -- ALE
 -- vim.g.ale_fix_on_save = 1
 
--- lightline
-vim.g.lightline = {
-	enable = {
-		statusline = 1,
-		tabline = 0,
+-- lualine
+require("lualine").setup({
+	sections = {
+		lualine_a = { "mode" },
+		lualine_b = { "branch", "diagnostics" },
+		lualine_c = { { "filename", path = 1 } },
+		lualine_x = {},
+		lualine_y = {},
+		lualine_z = { "location" },
 	},
-	colorscheme = "one",
-	active = {
-		left = {
-			{ "mode", "paste" },
-			{ "gitbranch", "readonly", "relativepath", "modified" },
-		},
-		right = {
-			{ "lineinfo" },
-			{ "percent" },
-		},
-	},
-	component = {
-		filename = "%t",
-		relativepath = "%f",
-	},
-	component_function = {
-		gitbranch = "fugitive#head",
-	},
-}
+})
 
 -- Fugitive
 -- Copy gitub links to clipboard
 noremap("n", "<leader>gl", ":.GBrowse!<CR><CR>")
 noremap("v", "<leader>gl", ":'<,'>Gbrowse!<CR>")
-
--- vimwiki
-vim.g.vimwiki_list = {
-	{
-		path = "~/vimwiki",
-		syntax = "markdown",
-		ext = "md",
-	},
-}
