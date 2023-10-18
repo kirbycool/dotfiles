@@ -27,7 +27,6 @@ vim.g.vimwiki_list = {
 }
 
 lazy.setup({
-	"editorconfig/editorconfig-vim",
 	"nvim-lualine/lualine.nvim",
 	"jiangmiao/auto-pairs",
 	{
