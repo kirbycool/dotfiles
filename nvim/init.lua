@@ -55,7 +55,7 @@ lazy.setup({
 	"hrsh7th/cmp-vsnip",
 	"hrsh7th/vim-vsnip",
 	{
-		"jose-elias-alvarez/null-ls.nvim",
+		"nvimtools/none-ls.nvim",
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 	},
 })
@@ -87,7 +87,7 @@ vim.g.netrw_liststyle = 3
 
 -- Colors
 vim.o.termguicolors = true
-vim.cmd("colorscheme onedark")
+vim.cmd("colorscheme onelight")
 
 --
 -- Mappings
@@ -110,8 +110,6 @@ noremap("n", "<leader><S-K>", "<C-W><C-K>")
 noremap("n", "<leader><S-L>", "<C-W><C-L>")
 noremap("n", "<leader><S-H>", "<C-W><C-H>")
 
-noremap("n", "<leader>e", ":Texplore<CR>")
-
 noremap("n", "<leader>)", ":colorscheme onelight<CR>")
 noremap("n", "<leader>(", ":colorscheme onedark<CR>")
 
@@ -130,9 +128,36 @@ noremap("c", "<PageUp>", "<C-c>")
 --
 
 -- Telescope
-require("telescope").load_extension("ui-select")
+local telescope = require("telescope")
 local telescope_builtin = require("telescope.builtin")
-vim.keymap.set("n", "<leader>f", telescope_builtin.find_files)
+local telescope_actions = require("telescope.actions")
+
+telescope.load_extension("ui-select")
+telescope.setup({
+	defaults = {
+		path_display = { shorten = { len = 5 } },
+		vimgrep_arguments = {
+			"rg",
+			"--color=never",
+			"--no-heading",
+			"--with-filename",
+			"--line-number",
+			"--column",
+			"--smart-case",
+			"--hidden",
+		},
+		mappings = {
+			i = {
+				["<Down>"] = telescope_actions.cycle_history_next,
+				["<Up>"] = telescope_actions.cycle_history_prev,
+			},
+		},
+	},
+})
+
+vim.keymap.set("n", "<leader>f", function()
+	telescope_builtin.find_files({ hidden = true })
+end)
 vim.keymap.set("n", "<leader>b", function()
 	telescope_builtin.buffers({ ignore_current_buffer = true, sort_mru = true })
 end)
@@ -140,9 +165,6 @@ vim.keymap.set("n", "<leader>/", telescope_builtin.live_grep)
 vim.keymap.set("n", "<leader>e", function()
 	telescope_builtin.diagnostics({ bufnr = 0 })
 end)
-
--- ALE
--- vim.g.ale_fix_on_save = 1
 
 -- lualine
 require("lualine").setup({
