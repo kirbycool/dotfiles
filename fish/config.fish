@@ -20,6 +20,7 @@ alias be='bundle exec'
 alias ls='exa'
 alias tmux='tmux -2'
 alias tf='terraform'
+alias rg='rg --hidden'
 
 # Machine specific settings
 if test -e ~/.config/fish/local.fish
