@@ -5,16 +5,16 @@ mason.setup()
 
 -- Diagnostic settings
 vim.api.nvim_exec(
-	[[
+  [[
     autocmd DiagnosticChanged * lua vim.diagnostic.setloclist({open = false })
   ]],
-	false
+  false
 )
 vim.api.nvim_exec(
-	[[
+  [[
     autocmd BufEnter * lua vim.diagnostic.setloclist({open = false })
   ]],
-	false
+  false
 )
 
 -- LSP Bindings
@@ -31,9 +31,10 @@ vim.keymap.set("n", "ga", vim.lsp.buf.code_action)
 -- Diagnostic bindings
 vim.keymap.set("n", "<leader>t", vim.diagnostic.open_float)
 
+-- Server setup
 lsp.gopls.setup({})
 lsp.rust_analyzer.setup({})
+lsp.vtsls.setup({})
 
 require("lsp/null_ls") -- Diagnostics/formatting
 require("lsp/sorbet") -- Ruby
-require("lsp/tsserver") -- JS/TS

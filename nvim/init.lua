@@ -1,13 +1,13 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -19,45 +19,45 @@ vim.g.mapleader = ","
 
 -- vimwiki
 vim.g.vimwiki_list = {
-	{
-		path = "~/vimwiki/",
-		syntax = "markdown",
-		ext = "md",
-	},
+  {
+    path = "~/vimwiki/",
+    syntax = "markdown",
+    ext = "md",
+  },
 }
 
 lazy.setup({
-	"nvim-lualine/lualine.nvim",
-	"jiangmiao/auto-pairs",
-	{
-		"nvim-telescope/telescope.nvim",
-		dependencies = { "nvim-lua/plenary.nvim" },
-	},
-	"nvim-telescope/telescope-ui-select.nvim",
-	"kirbycool/one-colors.vim",
-	"machakann/vim-sandwich",
-	"junegunn/goyo.vim",
-	"tpope/vim-eunuch",
-	"tpope/vim-fugitive",
-	"tpope/vim-rhubarb",
-	"vimwiki/vimwiki",
+  "nvim-lualine/lualine.nvim",
+  "jiangmiao/auto-pairs",
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
+  "nvim-telescope/telescope-ui-select.nvim",
+  "olimorris/onedarkpro.nvim",
+  "machakann/vim-sandwich",
+  "junegunn/goyo.vim",
+  "tpope/vim-eunuch",
+  "tpope/vim-fugitive",
+  "tpope/vim-rhubarb",
+  "vimwiki/vimwiki",
 
-	-- Treesitter stuff
-	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-	"nvim-treesitter/playground",
+  -- Treesitter stuff
+  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+  "nvim-treesitter/playground",
 
-	-- Autocomplete/lsp stuff
-	"neovim/nvim-lspconfig",
-	"williamboman/mason.nvim",
-	"hrsh7th/nvim-cmp",
-	"hrsh7th/cmp-buffer",
-	"hrsh7th/cmp-nvim-lsp",
-	"hrsh7th/cmp-vsnip",
-	"hrsh7th/vim-vsnip",
-	{
-		"nvimtools/none-ls.nvim",
-		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-	},
+  -- Autocomplete/lsp stuff
+  "neovim/nvim-lspconfig",
+  "williamboman/mason.nvim",
+  "hrsh7th/nvim-cmp",
+  "hrsh7th/cmp-buffer",
+  "hrsh7th/cmp-nvim-lsp",
+  "hrsh7th/cmp-vsnip",
+  "hrsh7th/vim-vsnip",
+  {
+    "nvimtools/none-ls.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+  },
 })
 
 -- Load other config files
@@ -87,7 +87,7 @@ vim.g.netrw_liststyle = 3
 
 -- Colors
 vim.o.termguicolors = true
-vim.cmd("colorscheme onelight")
+vim.cmd("colorscheme onedark")
 
 --
 -- Mappings
@@ -134,48 +134,48 @@ local telescope_actions = require("telescope.actions")
 
 telescope.load_extension("ui-select")
 telescope.setup({
-	defaults = {
-		path_display = { shorten = { len = 5 } },
-		vimgrep_arguments = {
-			"rg",
-			"--color=never",
-			"--no-heading",
-			"--with-filename",
-			"--line-number",
-			"--column",
-			"--smart-case",
-			"--hidden",
-		},
-		mappings = {
-			i = {
-				["<Down>"] = telescope_actions.cycle_history_next,
-				["<Up>"] = telescope_actions.cycle_history_prev,
-			},
-		},
-	},
+  defaults = {
+    path_display = { shorten = { len = 5 } },
+    vimgrep_arguments = {
+      "rg",
+      "--color=never",
+      "--no-heading",
+      "--with-filename",
+      "--line-number",
+      "--column",
+      "--smart-case",
+      "--hidden",
+    },
+    mappings = {
+      i = {
+        ["<Down>"] = telescope_actions.cycle_history_next,
+        ["<Up>"] = telescope_actions.cycle_history_prev,
+      },
+    },
+  },
 })
 
 vim.keymap.set("n", "<leader>f", function()
-	telescope_builtin.find_files({ hidden = true })
+  telescope_builtin.find_files({ hidden = true })
 end)
 vim.keymap.set("n", "<leader>b", function()
-	telescope_builtin.buffers({ ignore_current_buffer = true, sort_mru = true })
+  telescope_builtin.buffers({ ignore_current_buffer = true, sort_mru = true })
 end)
 vim.keymap.set("n", "<leader>/", telescope_builtin.live_grep)
 vim.keymap.set("n", "<leader>e", function()
-	telescope_builtin.diagnostics({ bufnr = 0 })
+  telescope_builtin.diagnostics({ bufnr = 0 })
 end)
 
 -- lualine
 require("lualine").setup({
-	sections = {
-		lualine_a = { "mode" },
-		lualine_b = { "branch", "diagnostics" },
-		lualine_c = { { "filename", path = 1 } },
-		lualine_x = {},
-		lualine_y = {},
-		lualine_z = { "location" },
-	},
+  sections = {
+    lualine_a = { "mode" },
+    lualine_b = { "branch", "diagnostics" },
+    lualine_c = { { "filename", path = 1 } },
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = { "location" },
+  },
 })
 
 -- Fugitive
