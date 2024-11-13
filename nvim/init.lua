@@ -136,6 +136,7 @@ telescope.load_extension("ui-select")
 telescope.setup({
   defaults = {
     path_display = { shorten = { len = 5 } },
+    file_ignore_patterns = { "^.git/" },
     vimgrep_arguments = {
       "rg",
       "--color=never",
