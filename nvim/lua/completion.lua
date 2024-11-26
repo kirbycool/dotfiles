@@ -3,6 +3,8 @@ local cmp = require("cmp")
 vim.cmd([[set shortmess+=c]])
 
 cmp.setup({
+  preselect = cmp.PreselectMode.None,
+
 	snippet = {
 		expand = function(args)
 			vim.fn["vsnip#anonymous"](args.body)
