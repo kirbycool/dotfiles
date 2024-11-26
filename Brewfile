@@ -10,5 +10,6 @@ brew "fzf"
 brew "neovim"
 brew "ripgrep"
 brew "starship"
+brew "zellij"
 
 cask "alacritty"
