@@ -12,8 +12,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local lazy = require("lazy")
-local utils = require("utils")
-local noremap = utils.noremap
 
 vim.g.mapleader = ","
 
@@ -94,34 +92,28 @@ vim.cmd("colorscheme onedark")
 --
 
 -- Move screen lines
-noremap("n", "j", "gj")
-noremap("n", "k", "gk")
-noremap("v", "j", "gj")
-noremap("v", "j", "gj")
+vim.keymap.set("n", "j", "gj")
+vim.keymap.set("n", "k", "gk")
+vim.keymap.set("v", "j", "gj")
+vim.keymap.set("v", "j", "gj")
 
 -- buffer navigation
-noremap("n", "<leader>h", ":bn<CR>")
-noremap("n", "<leader>l", ":bp<CR>")
-noremap("n", "<leader>j", ":b#<CR>")
+vim.keymap.set("n", "<leader>h", ":bn<CR>")
+vim.keymap.set("n", "<leader>l", ":bp<CR>")
+vim.keymap.set("n", "<leader>j", ":b#<CR>")
 
--- Switch splits
-noremap("n", "<leader><S-J>", "<C-W><C-J>")
-noremap("n", "<leader><S-K>", "<C-W><C-K>")
-noremap("n", "<leader><S-L>", "<C-W><C-L>")
-noremap("n", "<leader><S-H>", "<C-W><C-H>")
-
-noremap("n", "<leader>)", ":colorscheme onelight<CR>")
-noremap("n", "<leader>(", ":colorscheme onedark<CR>")
+vim.keymap.set("n", "<leader>)", ":colorscheme onelight<CR>")
+vim.keymap.set("n", "<leader>(", ":colorscheme onedark<CR>")
 
 -- Copy current filename to clipboard
-noremap("n", "<leader>cf", ":let @* = expand('%')<CR>")
+vim.keymap.set("n", "<leader>cf", ":let @* = expand('%')<CR>")
 
 -- Workaround for kines<C-W><C-L>is keyboard. Should probably remap on the hardware
-noremap("n", "<PageUp>", "<ESC>")
-noremap("i", "<PageUp>", "<ESC>")
-noremap("v", "<PageUp>", "<ESC>")
-noremap("o", "<PageUp>", "<ESC>")
-noremap("c", "<PageUp>", "<C-c>")
+vim.keymap.set("n", "<PageUp>", "<ESC>")
+vim.keymap.set("i", "<PageUp>", "<ESC>")
+vim.keymap.set("v", "<PageUp>", "<ESC>")
+vim.keymap.set("o", "<PageUp>", "<ESC>")
+vim.keymap.set("c", "<PageUp>", "<C-c>")
 
 --
 -- Plugin settings
@@ -180,6 +172,6 @@ require("lualine").setup({
 })
 
 -- Fugitive
--- Copy gitub links to clipboard
-noremap("n", "<leader>gl", ":.GBrowse!<CR><CR>")
-noremap("v", "<leader>gl", ":'<,'>Gbrowse!<CR>")
+-- Copy github links to clipboard
+vim.keymap.set("n", "<leader>gl", ":.GBrowse!<CR><CR>")
+vim.keymap.set("v", "<leader>gl", ":'<,'>Gbrowse!<CR>")
