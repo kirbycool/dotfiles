@@ -13,9 +13,6 @@ set -gx PATH $HOME/.cargo/bin $PATH
 # Random local binaries
 set -gx PATH $HOME/.local/bin $PATH
 
-set -gx ASDF_ROOT ~/.asdf
-source ~/.asdf/asdf.fish
-
 alias be='bundle exec'
 alias ls='exa'
 alias tmux='tmux -2'
@@ -28,3 +25,5 @@ if test -e ~/.config/fish/local.fish
 end
 
 eval (starship init fish)
+
+mise activate fish | source
