@@ -46,6 +46,9 @@ null_ls.setup({
 
     -- Go
     builtins.formatting.gofmt,
+
+    -- Python
+    builtins.formatting.black,
   },
 
   on_attach = function(client, bufnr)

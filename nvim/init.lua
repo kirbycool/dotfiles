@@ -45,11 +45,19 @@ lazy.setup({
   "nvim-treesitter/playground",
 
   -- Autocomplete/lsp stuff
-  "neovim/nvim-lspconfig",
-  "williamboman/mason.nvim",
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      { "williamboman/mason.nvim", config = true },
+      "hrsh7th/cmp-nvim-lsp",
+    },
+    config = function()
+      require("lsp")
+    end,
+  },
+
   "hrsh7th/nvim-cmp",
   "hrsh7th/cmp-buffer",
-  "hrsh7th/cmp-nvim-lsp",
   "hrsh7th/cmp-vsnip",
   "hrsh7th/vim-vsnip",
   {
@@ -60,7 +68,6 @@ lazy.setup({
 
 -- Load other config files
 require("completion")
-require("lsp")
 require("treesitter")
 
 vim.cmd("filetype plugin on")
