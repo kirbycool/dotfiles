@@ -1,3 +1,7 @@
+default_layout "compact"
+
+pane_frames false
+
 keybinds {
     normal {
         unbind "Ctrl o"
