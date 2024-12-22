@@ -34,7 +34,6 @@ lazy.setup({
   "nvim-telescope/telescope-ui-select.nvim",
   "olimorris/onedarkpro.nvim",
   "machakann/vim-sandwich",
-  "junegunn/goyo.vim",
   "tpope/vim-eunuch",
   "tpope/vim-fugitive",
   "tpope/vim-rhubarb",

@@ -35,7 +35,7 @@ vim.keymap.set("n", "<leader>t", vim.diagnostic.open_float)
 lsp.gopls.setup({})
 lsp.rust_analyzer.setup({})
 lsp.vtsls.setup({})
-lsp.pyright.setup({})
+lsp.basedpyright.setup({})
 
 require("lsp/null_ls") -- Diagnostics/formatting
 require("lsp/sorbet") -- Ruby
