@@ -32,7 +32,14 @@ lazy.setup({
     dependencies = { "nvim-lua/plenary.nvim" },
   },
   "nvim-telescope/telescope-ui-select.nvim",
-  "olimorris/onedarkpro.nvim",
+  {
+    "olimorris/onedarkpro.nvim",
+    opts = {
+      highlights = {
+        ["@variable"] = { fg = "${white}" },
+      },
+    },
+  },
   "machakann/vim-sandwich",
   "tpope/vim-eunuch",
   "tpope/vim-fugitive",
@@ -91,7 +98,7 @@ vim.g.netrw_liststyle = 3
 
 -- Colors
 vim.o.termguicolors = true
-vim.cmd("colorscheme onedark")
+vim.cmd.colorscheme("onedark")
 
 --
 -- Mappings
