@@ -1,17 +1,17 @@
 [general]
 import = [
-  "~/.config/alacritty/themes/one_dark.toml"
+  "~/.config/alacritty/themes/one_light.toml"
 ]
 
 [font]
 size = 17.0
 
 [font.bold]
-family = "Source Code Variable"
+family = "SourceCodeVF"
 style = "Bold"
 
 [font.normal]
-family = "Source Code Variable"
+family = "SourceCodeVF"
 style = "Regular"
 
 [terminal.shell]
