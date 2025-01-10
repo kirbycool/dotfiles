@@ -32,14 +32,7 @@ lazy.setup({
     dependencies = { "nvim-lua/plenary.nvim" },
   },
   "nvim-telescope/telescope-ui-select.nvim",
-  {
-    "olimorris/onedarkpro.nvim",
-    opts = {
-      highlights = {
-        ["@variable"] = { fg = "${white}" },
-      },
-    },
-  },
+  { "olimorris/onedarkpro.nvim" },
   "machakann/vim-sandwich",
   "tpope/vim-eunuch",
   "tpope/vim-fugitive",
