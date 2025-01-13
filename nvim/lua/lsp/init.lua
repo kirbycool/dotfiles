@@ -34,7 +34,8 @@ vim.keymap.set("n", "<leader>t", vim.diagnostic.open_float)
 -- Server setup
 lsp.gopls.setup({})
 lsp.rust_analyzer.setup({})
-lsp.vtsls.setup({})
+-- Trying out typescript-tools
+-- lsp.vtsls.setup({})
 lsp.basedpyright.setup({
   on_attach = function(client)
     client.server_capabilities.semanticTokensProvider = nil

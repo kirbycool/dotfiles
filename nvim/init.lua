@@ -54,6 +54,11 @@ lazy.setup({
       require("lsp")
     end,
   },
+  {
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    opts = {},
+  },
 
   "hrsh7th/nvim-cmp",
   "hrsh7th/cmp-buffer",
