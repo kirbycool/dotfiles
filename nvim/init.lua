@@ -27,12 +27,8 @@ vim.g.vimwiki_list = {
 lazy.setup({
   "nvim-lualine/lualine.nvim",
   "jiangmiao/auto-pairs",
-  {
-    "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-  },
-  "nvim-telescope/telescope-ui-select.nvim",
-  { "olimorris/onedarkpro.nvim" },
+  "ibhagwan/fzf-lua",
+  "olimorris/onedarkpro.nvim",
   "machakann/vim-sandwich",
   "tpope/vim-eunuch",
   "tpope/vim-fugitive",
@@ -57,7 +53,6 @@ lazy.setup({
   {
     "pmizio/typescript-tools.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    opts = {},
   },
 
   "hrsh7th/nvim-cmp",
@@ -130,45 +125,20 @@ vim.keymap.set("c", "<PageUp>", "<C-c>")
 -- Plugin settings
 --
 
--- Telescope
-local telescope = require("telescope")
-local telescope_builtin = require("telescope.builtin")
-local telescope_actions = require("telescope.actions")
-
-telescope.load_extension("ui-select")
-telescope.setup({
-  defaults = {
-    path_display = { shorten = { len = 5 } },
-    file_ignore_patterns = { "^.git/" },
-    vimgrep_arguments = {
-      "rg",
-      "--color=never",
-      "--no-heading",
-      "--with-filename",
-      "--line-number",
-      "--column",
-      "--smart-case",
-      "--hidden",
-    },
-    mappings = {
-      i = {
-        ["<Down>"] = telescope_actions.cycle_history_next,
-        ["<Up>"] = telescope_actions.cycle_history_prev,
-      },
-    },
+-- fzf-lua
+local fzf = require("fzf-lua")
+fzf.setup({
+  files = {
+    git_icons = false,
   },
 })
-
-vim.keymap.set("n", "<leader>f", function()
-  telescope_builtin.find_files({ hidden = true })
-end)
-vim.keymap.set("n", "<leader>b", function()
-  telescope_builtin.buffers({ ignore_current_buffer = true, sort_mru = true })
-end)
-vim.keymap.set("n", "<leader>/", telescope_builtin.live_grep)
-vim.keymap.set("n", "<leader>e", function()
-  telescope_builtin.diagnostics({ bufnr = 0 })
-end)
+vim.keymap.set("n", "<leader>f", fzf.files)
+vim.keymap.set("n", "<leader>b", fzf.buffers)
+vim.keymap.set("n", "<leader>/", fzf.live_grep)
+vim.keymap.set("n", "<leader>e", fzf.diagnostics_document)
+vim.keymap.set("n", "gd", fzf.lsp_definitions)
+vim.keymap.set("n", "gD", fzf.lsp_typedefs)
+vim.keymap.set("n", "gr", fzf.lsp_references)
 
 -- lualine
 require("lualine").setup({
