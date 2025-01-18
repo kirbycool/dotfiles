@@ -43,7 +43,6 @@ lazy.setup({
     "neovim/nvim-lspconfig",
     dependencies = {
       { "williamboman/mason.nvim", config = true },
-      "hrsh7th/cmp-nvim-lsp",
     },
     config = function()
       require("lsp")
@@ -52,12 +51,49 @@ lazy.setup({
   {
     "pmizio/typescript-tools.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    opts = {},
   },
 
-  "hrsh7th/nvim-cmp",
-  "hrsh7th/cmp-buffer",
-  "hrsh7th/cmp-vsnip",
-  "hrsh7th/vim-vsnip",
+  {
+    "saghen/blink.cmp",
+
+    version = "*",
+    opts = {
+      keymap = {
+        preset = "default",
+
+        ["<S-Tab>"] = { "select_prev", "fallback" },
+        ["<Tab>"] = { "select_next", "fallback" },
+      },
+
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
+        cmdline = {},
+
+        providers = {
+          -- Lsp is slow on mono repo. Buffer is usually good enough.
+          lsp = { async = true },
+        },
+      },
+
+      completion = {
+        list = {
+          selection = { preselect = false, auto_insert = true },
+        },
+
+        menu = {
+          draw = {
+            columns = {
+              { "label", "label_description", gap = 1 },
+              { "kind" },
+            },
+          },
+        },
+      },
+    },
+    opts_extend = { "sources.default" },
+  },
+
   {
     "nvimtools/none-ls.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig", "nvimtools/none-ls-extras.nvim" },
@@ -65,7 +101,6 @@ lazy.setup({
 })
 
 -- Load other config files
-require("completion")
 require("treesitter")
 
 vim.cmd("filetype plugin on")
