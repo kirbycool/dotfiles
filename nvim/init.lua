@@ -28,7 +28,6 @@ lazy.setup({
   "nvim-lualine/lualine.nvim",
   "jiangmiao/auto-pairs",
   "ibhagwan/fzf-lua",
-  "olimorris/onedarkpro.nvim",
   "machakann/vim-sandwich",
   "tpope/vim-eunuch",
   "tpope/vim-fugitive",
@@ -90,8 +89,8 @@ vim.cmd("set clipboard+=unnamedplus")
 vim.g.netrw_liststyle = 3
 
 -- Colors
-vim.o.termguicolors = true
-vim.cmd.colorscheme("onedark")
+vim.o.termguicolors = false
+vim.cmd.colorscheme("term16")
 
 --
 -- Mappings
