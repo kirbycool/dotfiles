@@ -5,7 +5,7 @@ cyan = "#56b6c2"
 green = "#98c379"
 magenta = "#c678dd"
 red = "#be5046"
-white = "#abb2bf"
+white = "#828997"
 yellow = "#d19a66"
 
 [colors.normal]
@@ -15,7 +15,7 @@ cyan = "#56b6c2"
 green = "#98c379"
 magenta = "#c678dd"
 red = "#e06c75"
-white = "#abb2bf"
+white = "#828997"
 yellow = "#e5c07b"
 
 [colors.primary]
