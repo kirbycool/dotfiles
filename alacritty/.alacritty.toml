@@ -1,6 +1,6 @@
 [general]
 import = [
-  "~/.config/alacritty/themes/one_light.toml"
+  "~/.config/alacritty/themes/one_dark.toml"
 ]
 
 [font]
@@ -20,5 +20,7 @@ program = "/opt/homebrew/bin/fish"
 
 [window]
 startup_mode = "Maximized"
+option_as_alt = "Both"
 
 [terminal]
+
