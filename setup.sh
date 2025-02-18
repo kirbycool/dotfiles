@@ -8,14 +8,14 @@ ln -s $DOTFILES_DIR/.gitconfig ~/.gitconfig
 ln -s $DOTFILES_DIR/.tmux.conf ~/.tmux.conf
 
 mkdir -p ~/.config/nvim
-ln -s $DOTFILES_DIR/nvim/* ~/.config/nvim/
+ln -fs $DOTFILES_DIR/nvim/* ~/.config/nvim/
 
 mkdir -p ~/.config/fish
-ln -s $DOTFILES_DIR/fish/* ~/.config/fish/
+ln -fs $DOTFILES_DIR/fish/* ~/.config/fish/
 
 mkdir -p ~/.config/zellij
-ln -s $DOTFILES_DIR/zellij/* ~/.config/zellij/
+ln -fs $DOTFILES_DIR/zellij/* ~/.config/zellij/
 
 mkdir -p ~/.config/alacritty
-ln -s $DOTFILES_DIR/alacritty/.alacritty.toml ~/.alacritty.toml
-ln -s $DOTFILES_DIR/alacritty/* ~/.config/alacritty/
+ln -fs $DOTFILES_DIR/alacritty/.alacritty.toml ~/.alacritty.toml
+ln -fs $DOTFILES_DIR/alacritty/* ~/.config/alacritty/
