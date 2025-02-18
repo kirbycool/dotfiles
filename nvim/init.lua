@@ -165,6 +165,12 @@ fzf.setup({
   files = {
     git_icons = false,
   },
+  grep = {
+    actions = {
+      ["ctrl-g"] = false,
+      ["alt-g"] = fzf.actions.grep_lgrep,
+    },
+  },
 })
 vim.keymap.set("n", "<leader>f", fzf.files)
 vim.keymap.set("n", "<leader>b", fzf.buffers)

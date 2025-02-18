@@ -48,7 +48,8 @@ null_ls.setup({
     builtins.formatting.gofmt,
 
     -- Python
-    builtins.formatting.black,
+    -- builtins.formatting.black,
+    builtins.formatting.ruff,
   },
 
   on_attach = function(client, bufnr)

@@ -33,6 +33,11 @@ lsp.rust_analyzer.setup({})
 -- Trying out typescript-tools
 -- lsp.vtsls.setup({})
 lsp.basedpyright.setup({
+  settings = {
+    basedpyright = {
+      analysis = { typeCheckingMode = "off" },
+    },
+  },
   on_attach = function(client)
     client.server_capabilities.semanticTokensProvider = nil
   end,

@@ -22,20 +22,29 @@ local c = {
 
 local groups = {
   Comment = { ctermfg = c.dark_gray },
-  -- ColorColumn = { bg = c.black }, -- used for the columns set with 'colorcolumn'
   Conceal = { ctermfg = c.dark_gray }, -- placeholder characters substituted for concealed text (see 'conceallevel')
   Folded = { ctermfg = c.dark_gray, bold = true }, -- line used for closed folds
   LineNr = { ctermfg = c.dark_gray }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-  Pmenu = { ctermfg = c.black, ctermbg = c.gray }, -- Popup menu: normal item.
-  PmenuSel = { ctermfg = c.black, ctermbg = c.dark_gray }, -- Popup menu: selected item.
+  Pmenu = { ctermfg = c.white, ctermbg = c.black }, -- Popup menu: normal item.
+  PmenuSel = { ctermfg = c.black, ctermbg = c.gray }, -- Popup menu: selected item.
+  Title = { ctermfg = c.dark_green },
 
-  Constant = { ctermfg = c.yellow }, -- (preferred) any constant
+  Constant = { ctermfg = c.dark_yellow },
   Function = { ctermfg = c.blue }, -- function name (also: methods for classes)
-  Identifier = { ctermfg = c.dark_red }, -- (preferred) any variable name
+  Identifier = { ctermfg = c.white }, -- (preferred) any variable name
   Keyword = { ctermfg = c.magenta }, --  any other keyword
   Operator = { ctermfg = c.cyan }, -- "sizeof", "+", "*", etc.
+  Special = { ctermfg = c.dark_yellow },
   Statement = { ctermfg = c.magenta }, -- (preferred) any statement
-  Type = { ctermfg = c.dark_yellow }, -- (preferred) int, long, char, etc.
+  Type = { ctermfg = c.yellow }, -- (preferred) int, long, char, etc.
+
+  -- treesitter
+  ["@tag.attribute"] = { ctermfg = c.dark_red },
+  ["@variable"] = { link = "Identifier" },
+  ["@variable.member"] = { ctermfg = c.dark_red },
+
+  -- lsp
+  ["@lsp.type.property"] = { ctermfg = c.dark_red },
 }
 
 for group, hl in pairs(groups) do
