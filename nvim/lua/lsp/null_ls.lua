@@ -3,8 +3,6 @@ local null_ls = require("null-ls")
 
 local builtins = null_ls.builtins
 
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
 null_ls.setup({
   -- debug = true,
   sources = {
@@ -47,22 +45,4 @@ null_ls.setup({
     -- Go
     builtins.formatting.gofmt,
   },
-
-  on_attach = function(client, bufnr)
-    if client.supports_method("textDocument/formatting") then
-      vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        group = augroup,
-        buffer = bufnr,
-        callback = function()
-          vim.lsp.buf.format({
-            filter = function(lsp_client)
-              return lsp_client.name == "null-ls"
-            end,
-            bufnr = bufnr,
-          })
-        end,
-      })
-    end
-  end,
 })

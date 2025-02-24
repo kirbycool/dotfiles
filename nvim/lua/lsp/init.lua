@@ -44,5 +44,20 @@ lsp.basedpyright.setup({
 })
 lsp.ruff.setup({})
 
+-- Format on save
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+vim.api.nvim_clear_autocmds({ group = augroup })
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  callback = function(args)
+    vim.lsp.buf.format({
+      filter = function(lsp_client)
+        return lsp_client.name == "null-ls" or lsp_client.name == "ruff"
+      end,
+      bufnr = args.bufnr,
+    })
+  end,
+})
+
 require("lsp/null_ls") -- Diagnostics/formatting
 require("lsp/sorbet") -- Ruby
