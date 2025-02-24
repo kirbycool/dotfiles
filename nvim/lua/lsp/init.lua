@@ -42,6 +42,7 @@ lsp.basedpyright.setup({
     client.server_capabilities.semanticTokensProvider = nil
   end,
 })
+lsp.ruff.setup({})
 
 require("lsp/null_ls") -- Diagnostics/formatting
 require("lsp/sorbet") -- Ruby
