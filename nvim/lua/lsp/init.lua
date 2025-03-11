@@ -30,8 +30,15 @@ vim.keymap.set("n", "<leader>t", vim.diagnostic.open_float)
 -- Server setup
 lsp.gopls.setup({})
 lsp.rust_analyzer.setup({})
--- Trying out typescript-tools
--- lsp.vtsls.setup({})
+lsp.vtsls.setup({
+  settings = {
+    typescript = {
+      tsserver = {
+        maxTsServerMemory = 8192,
+      },
+    },
+  },
+})
 lsp.basedpyright.setup({
   settings = {
     basedpyright = {

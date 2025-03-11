@@ -48,11 +48,6 @@ lazy.setup({
       require("lsp")
     end,
   },
-  {
-    "pmizio/typescript-tools.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    opts = {},
-  },
 
   {
     "saghen/blink.cmp",
@@ -68,7 +63,6 @@ lazy.setup({
 
       sources = {
         default = { "lsp", "path", "snippets", "buffer" },
-        cmdline = {},
 
         providers = {
           -- Lsp is slow on mono repo. Buffer is usually good enough.
