@@ -30,18 +30,4 @@ default_shell "fish"
 
 mouse_mode false
 
-themes {
-    default {
-        fg 7
-        bg 8
-        black 0
-        red 9
-        green 2
-        yellow 11
-        blue 12
-        magenta 5
-        cyan 6
-        white 15
-        orange 1
-    }
-}
+theme "ansi"
