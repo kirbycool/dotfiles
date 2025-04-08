@@ -1,5 +1,5 @@
 format = """
-$username\
+$hostname\
 $directory\
 $git_branch
 $character
