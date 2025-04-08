@@ -13,7 +13,8 @@
   cp = cherry-pick
 
 [core]
-  commentchar = @
+# pre-commit doesn't respect this when generating the template and it's getting really annoying
+#  commentchar = @
 
 [pull]
   rebase = true

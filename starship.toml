@@ -1,2 +1,9 @@
+format = """
+$username\
+$directory\
+$git_branch
+$character
+"""
+
 [package]
 disabled = true
