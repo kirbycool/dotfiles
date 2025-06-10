@@ -1,4 +1,3 @@
-local lsp = require("lspconfig")
 local mason = require("mason")
 
 mason.setup()
@@ -28,9 +27,10 @@ vim.keymap.set("n", "ga", vim.lsp.buf.code_action)
 vim.keymap.set("n", "<leader>t", vim.diagnostic.open_float)
 
 -- Server setup
-lsp.gopls.setup({})
-lsp.rust_analyzer.setup({})
-lsp.vtsls.setup({
+vim.lsp.enable("gopls")
+vim.lsp.enable("rust_analyzer")
+
+vim.lsp.config["vtsls"] = {
   settings = {
     typescript = {
       tsserver = {
@@ -38,18 +38,23 @@ lsp.vtsls.setup({
       },
     },
   },
-})
-lsp.basedpyright.setup({
-  settings = {
-    basedpyright = {
-      analysis = { typeCheckingMode = "off" },
-    },
-  },
-  on_attach = function(client)
-    client.server_capabilities.semanticTokensProvider = nil
-  end,
-})
-lsp.ruff.setup({})
+}
+vim.lsp.enable("vtsls")
+
+-- lsp.basedpyright.setup({
+--   settings = {
+--     basedpyright = {
+--       analysis = { typeCheckingMode = "off" },
+--     },
+--   },
+--   on_attach = function(client)
+--     client.server_capabilities.semanticTokensProvider = nil
+--   end,
+-- })
+vim.lsp.enable("pyrefly")
+vim.lsp.enable("ruff")
+
+-- lsp.elixirls.setup({})
 
 -- Format on save
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
