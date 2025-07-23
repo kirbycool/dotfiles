@@ -39,7 +39,13 @@ vim.lsp.config["vtsls"] = {
     },
   },
 }
-vim.lsp.enable("vtsls")
+-- vim.lsp.enable("vtsls")
+vim.lsp.config["tsgo"] = {
+  cmd = { "tsgo", "--lsp", "--stdio" },
+  filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
+  root_markers = { "tsconfig.json", "package.json", "jsconfig.json", ".git" },
+}
+vim.lsp.enable("tsgo")
 
 -- lsp.basedpyright.setup({
 --   settings = {
