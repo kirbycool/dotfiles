@@ -50,3 +50,5 @@ local groups = {
 for group, hl in pairs(groups) do
   vim.api.nvim_set_hl(0, group, hl)
 end
+
+vim.g.colors_name = "term16"
