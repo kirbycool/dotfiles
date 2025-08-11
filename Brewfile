@@ -1,6 +1,3 @@
-tap "homebrew/bundle"
-tap "homebrew/services"
-
 brew "fd"
 brew "fish"
 brew "fzf"
