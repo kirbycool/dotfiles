@@ -13,6 +13,8 @@ fish_add_path $HOME/.cargo/bin
 # Random local binaries
 fish_add_path $HOME/.local/bin
 
+fish_add_path /opt/homebrew/bin
+
 alias be='bundle exec'
 alias tmux='tmux -2'
 alias tf='terraform'
