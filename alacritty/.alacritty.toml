@@ -4,7 +4,7 @@ import = [
 ]
 
 [font]
-size = 16.0
+size = 18.0
 
 [font.bold]
 family = "SourceCodeVF"
