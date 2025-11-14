@@ -30,24 +30,7 @@ vim.keymap.set("n", "<leader>t", vim.diagnostic.open_float)
 vim.lsp.enable("gopls")
 vim.lsp.enable("rust_analyzer")
 
-vim.lsp.config["vtsls"] = {
-  settings = {
-    typescript = {
-      tsserver = {
-        maxTsServerMemory = 8192,
-      },
-    },
-  },
-}
-vim.lsp.enable("vtsls")
-
--- tsgo is way faster but not quite ready. No import actions, slow/broken ast updates
--- vim.lsp.config["tsgo"] = {
---   cmd = { "tsgo", "--lsp", "--stdio" },
---   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
---   root_markers = { "tsconfig.json", "package.json", "jsconfig.json", ".git" },
--- }
--- vim.lsp.enable("tsgo")
+vim.lsp.enable("tsgo")
 
 -- lsp.basedpyright.setup({
 --   settings = {
